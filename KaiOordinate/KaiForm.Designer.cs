@@ -29,7 +29,6 @@ namespace Kaioordinate
         /// </summary>
         private void InitializeComponent()
         {
-            this.pnlKaiForm = new System.Windows.Forms.Panel();
             this.btnCancel = new FontAwesome.Sharp.IconButton();
             this.btnSave = new FontAwesome.Sharp.IconButton();
             this.txtServingQuantity = new System.Windows.Forms.TextBox();
@@ -51,27 +50,7 @@ namespace Kaioordinate
             this.txtKaiNo = new System.Windows.Forms.TextBox();
             this.lblKaiNo = new System.Windows.Forms.Label();
             this.lstKai = new System.Windows.Forms.ListBox();
-            this.pnlKaiForm.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // pnlKaiForm
-            // 
-            this.pnlKaiForm.Controls.Add(this.btnCancel);
-            this.pnlKaiForm.Controls.Add(this.btnSave);
-            this.pnlKaiForm.Controls.Add(this.txtServingQuantity);
-            this.pnlKaiForm.Controls.Add(this.txtPreparationTime);
-            this.pnlKaiForm.Controls.Add(this.txtPreparation);
-            this.pnlKaiForm.Controls.Add(this.txtKaiName);
-            this.pnlKaiForm.Controls.Add(this.txtEvent);
-            this.pnlKaiForm.Controls.Add(this.lblServingQuantity);
-            this.pnlKaiForm.Controls.Add(this.lblPreparationTime);
-            this.pnlKaiForm.Controls.Add(this.lblPreparation);
-            this.pnlKaiForm.Controls.Add(this.lblKaiName);
-            this.pnlKaiForm.Controls.Add(this.lblEvent);
-            this.pnlKaiForm.Location = new System.Drawing.Point(291, 67);
-            this.pnlKaiForm.Name = "pnlKaiForm";
-            this.pnlKaiForm.Size = new System.Drawing.Size(490, 263);
-            this.pnlKaiForm.TabIndex = 29;
             // 
             // btnCancel
             // 
@@ -82,7 +61,7 @@ namespace Kaioordinate
             this.btnCancel.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnCancel.IconSize = 60;
             this.btnCancel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCancel.Location = new System.Drawing.Point(338, 179);
+            this.btnCancel.Location = new System.Drawing.Point(293, 95);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(135, 62);
             this.btnCancel.TabIndex = 31;
@@ -100,7 +79,7 @@ namespace Kaioordinate
             this.btnSave.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnSave.IconSize = 60;
             this.btnSave.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSave.Location = new System.Drawing.Point(192, 179);
+            this.btnSave.Location = new System.Drawing.Point(293, 21);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(119, 62);
             this.btnSave.TabIndex = 30;
@@ -112,7 +91,7 @@ namespace Kaioordinate
             // txtServingQuantity
             // 
             this.txtServingQuantity.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.txtServingQuantity.Location = new System.Drawing.Point(221, 211);
+            this.txtServingQuantity.Location = new System.Drawing.Point(513, 273);
             this.txtServingQuantity.Multiline = true;
             this.txtServingQuantity.Name = "txtServingQuantity";
             this.txtServingQuantity.Size = new System.Drawing.Size(111, 30);
@@ -121,7 +100,7 @@ namespace Kaioordinate
             // txtPreparationTime
             // 
             this.txtPreparationTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.txtPreparationTime.Location = new System.Drawing.Point(221, 163);
+            this.txtPreparationTime.Location = new System.Drawing.Point(513, 225);
             this.txtPreparationTime.Multiline = true;
             this.txtPreparationTime.Name = "txtPreparationTime";
             this.txtPreparationTime.Size = new System.Drawing.Size(111, 30);
@@ -130,7 +109,7 @@ namespace Kaioordinate
             // txtPreparation
             // 
             this.txtPreparation.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.txtPreparation.Location = new System.Drawing.Point(221, 113);
+            this.txtPreparation.Location = new System.Drawing.Point(513, 175);
             this.txtPreparation.Multiline = true;
             this.txtPreparation.Name = "txtPreparation";
             this.txtPreparation.Size = new System.Drawing.Size(66, 30);
@@ -139,7 +118,7 @@ namespace Kaioordinate
             // txtKaiName
             // 
             this.txtKaiName.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.txtKaiName.Location = new System.Drawing.Point(221, 65);
+            this.txtKaiName.Location = new System.Drawing.Point(513, 127);
             this.txtKaiName.Multiline = true;
             this.txtKaiName.Name = "txtKaiName";
             this.txtKaiName.Size = new System.Drawing.Size(247, 30);
@@ -148,7 +127,7 @@ namespace Kaioordinate
             // txtEvent
             // 
             this.txtEvent.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.txtEvent.Location = new System.Drawing.Point(221, 14);
+            this.txtEvent.Location = new System.Drawing.Point(513, 76);
             this.txtEvent.Multiline = true;
             this.txtEvent.Name = "txtEvent";
             this.txtEvent.Size = new System.Drawing.Size(247, 30);
@@ -159,7 +138,7 @@ namespace Kaioordinate
             this.lblServingQuantity.AutoSize = true;
             this.lblServingQuantity.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
             this.lblServingQuantity.ForeColor = System.Drawing.Color.White;
-            this.lblServingQuantity.Location = new System.Drawing.Point(57, 217);
+            this.lblServingQuantity.Location = new System.Drawing.Point(357, 279);
             this.lblServingQuantity.Name = "lblServingQuantity";
             this.lblServingQuantity.Size = new System.Drawing.Size(147, 24);
             this.lblServingQuantity.TabIndex = 6;
@@ -170,7 +149,7 @@ namespace Kaioordinate
             this.lblPreparationTime.AutoSize = true;
             this.lblPreparationTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
             this.lblPreparationTime.ForeColor = System.Drawing.Color.White;
-            this.lblPreparationTime.Location = new System.Drawing.Point(50, 169);
+            this.lblPreparationTime.Location = new System.Drawing.Point(350, 231);
             this.lblPreparationTime.Name = "lblPreparationTime";
             this.lblPreparationTime.Size = new System.Drawing.Size(154, 24);
             this.lblPreparationTime.TabIndex = 5;
@@ -181,7 +160,7 @@ namespace Kaioordinate
             this.lblPreparation.AutoSize = true;
             this.lblPreparation.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
             this.lblPreparation.ForeColor = System.Drawing.Color.White;
-            this.lblPreparation.Location = new System.Drawing.Point(88, 119);
+            this.lblPreparation.Location = new System.Drawing.Point(388, 181);
             this.lblPreparation.Name = "lblPreparation";
             this.lblPreparation.Size = new System.Drawing.Size(116, 24);
             this.lblPreparation.TabIndex = 4;
@@ -192,7 +171,7 @@ namespace Kaioordinate
             this.lblKaiName.AutoSize = true;
             this.lblKaiName.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
             this.lblKaiName.ForeColor = System.Drawing.Color.White;
-            this.lblKaiName.Location = new System.Drawing.Point(112, 71);
+            this.lblKaiName.Location = new System.Drawing.Point(412, 133);
             this.lblKaiName.Name = "lblKaiName";
             this.lblKaiName.Size = new System.Drawing.Size(92, 24);
             this.lblKaiName.TabIndex = 3;
@@ -203,7 +182,7 @@ namespace Kaioordinate
             this.lblEvent.AutoSize = true;
             this.lblEvent.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
             this.lblEvent.ForeColor = System.Drawing.Color.White;
-            this.lblEvent.Location = new System.Drawing.Point(146, 20);
+            this.lblEvent.Location = new System.Drawing.Point(443, 82);
             this.lblEvent.Name = "lblEvent";
             this.lblEvent.Size = new System.Drawing.Size(58, 24);
             this.lblEvent.TabIndex = 2;
@@ -325,7 +304,7 @@ namespace Kaioordinate
             this.lblKaiNo.AutoSize = true;
             this.lblKaiNo.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
             this.lblKaiNo.ForeColor = System.Drawing.Color.White;
-            this.lblKaiNo.Location = new System.Drawing.Point(437, 37);
+            this.lblKaiNo.Location = new System.Drawing.Point(445, 37);
             this.lblKaiNo.Name = "lblKaiNo";
             this.lblKaiNo.Size = new System.Drawing.Size(58, 24);
             this.lblKaiNo.TabIndex = 21;
@@ -336,7 +315,7 @@ namespace Kaioordinate
             this.lstKai.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
             this.lstKai.FormattingEnabled = true;
             this.lstKai.ItemHeight = 24;
-            this.lstKai.Location = new System.Drawing.Point(20, 21);
+            this.lstKai.Location = new System.Drawing.Point(22, 21);
             this.lstKai.Name = "lstKai";
             this.lstKai.Size = new System.Drawing.Size(257, 268);
             this.lstKai.TabIndex = 20;
@@ -347,20 +326,29 @@ namespace Kaioordinate
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(73)))), ((int)(((byte)(41)))));
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.pnlKaiForm);
+            this.Controls.Add(this.btnCancel);
+            this.Controls.Add(this.btnSave);
             this.Controls.Add(this.btnReturn);
+            this.Controls.Add(this.txtServingQuantity);
             this.Controls.Add(this.btnDelete);
+            this.Controls.Add(this.txtPreparationTime);
             this.Controls.Add(this.btnUpdate);
+            this.Controls.Add(this.txtPreparation);
             this.Controls.Add(this.btnAdd);
+            this.Controls.Add(this.txtKaiName);
             this.Controls.Add(this.btnDown);
+            this.Controls.Add(this.txtEvent);
+            this.Controls.Add(this.lblServingQuantity);
             this.Controls.Add(this.btnUp);
+            this.Controls.Add(this.lblPreparationTime);
             this.Controls.Add(this.txtKaiNo);
+            this.Controls.Add(this.lblPreparation);
             this.Controls.Add(this.lblKaiNo);
+            this.Controls.Add(this.lblKaiName);
             this.Controls.Add(this.lstKai);
+            this.Controls.Add(this.lblEvent);
             this.Name = "KaiForm";
             this.Text = "Kai Management";
-            this.pnlKaiForm.ResumeLayout(false);
-            this.pnlKaiForm.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -388,6 +376,5 @@ namespace Kaioordinate
         private System.Windows.Forms.ListBox lstKai;
         private FontAwesome.Sharp.IconButton btnSave;
         private FontAwesome.Sharp.IconButton btnCancel;
-        private System.Windows.Forms.Panel pnlKaiForm;
     }
 }

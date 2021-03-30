@@ -48,9 +48,15 @@ namespace Kaioordinate
 
         }
 
+        /// <summary>
+        /// close the EventForm
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+
         private void btnReturn_Click(object sender, EventArgs e)
         {
-
+            Close();
         }
     }
 }

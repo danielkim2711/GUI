@@ -96,7 +96,7 @@ namespace Kaioordinate
             btnUpdate.Enabled = false;
             btnDelete.Enabled = false;
             btnReturn.Enabled = false;
-            pnlKaiForm.Show();
+            // pnlKaiForm.Show();
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
@@ -108,6 +108,12 @@ namespace Kaioordinate
         {
 
         }
+
+        /// <summary>
+        /// close the KaiForm
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
 
         private void btnReturn_Click(object sender, EventArgs e)
         {
@@ -134,7 +140,7 @@ namespace Kaioordinate
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
-            pnlKaiForm.Hide();
+            // pnlKaiForm.Hide();
             lstKai.Enabled = true;
             lstKai.Visible = true;
             btnUp.Enabled = true;
