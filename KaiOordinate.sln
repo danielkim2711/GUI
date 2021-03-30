@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31105.61
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KaiOordinate", "KaiOordinate\KaiOordinate.csproj", "{A036FB3C-5DD5-4016-9AA7-57EED8732395}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A036FB3C-5DD5-4016-9AA7-57EED8732395}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A036FB3C-5DD5-4016-9AA7-57EED8732395}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A036FB3C-5DD5-4016-9AA7-57EED8732395}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A036FB3C-5DD5-4016-9AA7-57EED8732395}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {DD13DA1B-3DAB-47ED-9CB6-F57B69A405D2}
+	EndGlobalSection
+EndGlobal
