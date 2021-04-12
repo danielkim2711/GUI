@@ -53,7 +53,7 @@ namespace Kaioordinate
         }
 
         /// <summary>
-        /// make button UP go up
+        /// make button "UP" to go up
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -67,7 +67,7 @@ namespace Kaioordinate
         }
 
         /// <summary>
-        /// make button DOWN go down
+        /// make button "DOWN" to go down
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -81,22 +81,15 @@ namespace Kaioordinate
         }
 
         /// <summary>
-        /// hide the list
+        /// once Add button is clicked, show the panel and make buttons invisible
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            lstKai.Enabled = false;
-            lstKai.Visible = false;
-            btnUp.Enabled = false;
-            btnDown.Enabled = false;
-            btnAdd.Enabled = false;
-            btnUpdate.Enabled = false;
-            btnDelete.Enabled = false;
-            btnReturn.Enabled = false;
-            // pnlKaiForm.Show();
+            ChangePanelVis(pnlAddKai, true);
+            ChangeButtonVis(false);
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
@@ -104,9 +97,30 @@ namespace Kaioordinate
 
         }
 
+        /// <summary>
+        /// delete a record
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+
         private void btnDelete_Click(object sender, EventArgs e)
         {
-
+            DataRow deleteKaiRow = DM.dtKai.Rows[cmKai.Position];
+            DataRow[] eventKaiRow = DM.dtEvent.Select("KaiID = " + txtKaiNo.Text);
+            if (eventKaiRow.Length != 0)
+            {
+                MessageBox.Show("You may only delete Kai that have no event relation", "Error");
+            }
+            else
+            {
+                if (MessageBox.Show("Are you sure you want to delete this record?", "Warning",
+                MessageBoxButtons.OKCancel) == DialogResult.OK)
+                {
+                    deleteKaiRow.Delete();
+                    MessageBox.Show("Kai deleted successfully", "Success");
+                    DM.UpdateKai();
+                }
+            }
         }
 
         /// <summary>
@@ -126,11 +140,10 @@ namespace Kaioordinate
             cmEvent.Position = DM.dvEvent.Find(eventID);
         }
 
-        private void btnSave_Click(object sender, EventArgs e)
+        private void btnAddSave_Click(object sender, EventArgs e)
         {
 
         }
-
 
         /// <summary>
         /// show the panel
@@ -138,27 +151,42 @@ namespace Kaioordinate
         /// <param name="sender"></param>
         /// <param name="e"></param>
 
-        private void btnCancel_Click(object sender, EventArgs e)
+        private void btnAddCancel_Click(object sender, EventArgs e)
         {
-            // pnlKaiForm.Hide();
-            lstKai.Enabled = true;
-            lstKai.Visible = true;
-            btnUp.Enabled = true;
-            btnDown.Enabled = true;
-            btnAdd.Enabled = true;
-            btnUpdate.Enabled = true;
-            btnDelete.Enabled = true;
-            btnReturn.Enabled = true;
+            ChangePanelVis(pnlAddKai, false);
+            ChangeButtonVis(true);
         }
 
-        private void ChangePanelVis(Panel pnlKaiForm, bool makeVisible)
-        {
-            pnlKaiForm.Visible = makeVisible;
+        /// <summary>
+        /// set a panel visible or invisible
+        /// </summary>
+        /// <param name="pnlAddKai"></param>
+        /// <param name="makeVisible"></param>
 
-            foreach (Control control in pnlKaiForm.Controls)
+        private void ChangePanelVis(Panel pnlAddKai, bool makeVisible)
+        {
+            pnlAddKai.Visible = makeVisible;
+
+            foreach (Control control in pnlAddKai.Controls)
             {
                 control.Visible = makeVisible;
             }
         }
+
+        /// <summary>
+        /// set buttons visible or invisible
+        /// </summary>
+        /// <param name="makeVisible"></param>
+        private void ChangeButtonVis(bool makeVisible)
+        {
+            lstKai.Visible = makeVisible;
+            btnUp.Enabled = makeVisible;
+            btnDown.Enabled = makeVisible;
+            btnAdd.Enabled = makeVisible;
+            btnUpdate.Enabled = makeVisible;
+            btnDelete.Enabled = makeVisible;
+            btnReturn.Enabled = makeVisible;
+        }
+
     }
 }

@@ -40,7 +40,7 @@ namespace Kaioordinate
             dtEventRegister = dsKaiOordinate.Tables["EventRegister"];
             dsKaiOordinate.EnforceConstraints = true;
         }
-        private void UpdateKai()
+        public void UpdateKai()
         {
             daKai.Update(dtKai);
         }
