@@ -31,11 +31,11 @@ namespace Kaioordinate
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DataModule));
             this.oleDbSelectCommand1 = new System.Data.OleDb.OleDbCommand();
+            this.ctnKai = new System.Data.OleDb.OleDbConnection();
             this.oleDbInsertCommand1 = new System.Data.OleDb.OleDbCommand();
             this.oleDbUpdateCommand1 = new System.Data.OleDb.OleDbCommand();
             this.oleDbDeleteCommand1 = new System.Data.OleDb.OleDbCommand();
             this.daEvent = new System.Data.OleDb.OleDbDataAdapter();
-            this.ctnKai = new System.Data.OleDb.OleDbConnection();
             this.oleDbSelectCommand2 = new System.Data.OleDb.OleDbCommand();
             this.oleDbInsertCommand2 = new System.Data.OleDb.OleDbCommand();
             this.oleDbUpdateCommand2 = new System.Data.OleDb.OleDbCommand();
@@ -65,6 +65,11 @@ namespace Kaioordinate
             this.oleDbSelectCommand1.CommandText = "SELECT        EventID, EventName, LocationID, EventDate\r\nFROM            EVENT\r\nO" +
     "RDER BY EventID";
             this.oleDbSelectCommand1.Connection = this.ctnKai;
+            // 
+            // ctnKai
+            // 
+            this.ctnKai.ConnectionString = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\\Temp\\kai-oordinate.mdb";
+            this.ctnKai.InfoMessage += new System.Data.OleDb.OleDbInfoMessageEventHandler(this.daEvent_InfoMessage);
             // 
             // oleDbInsertCommand1
             // 
@@ -116,11 +121,7 @@ namespace Kaioordinate
                         new System.Data.Common.DataColumnMapping("LocationID", "LocationID"),
                         new System.Data.Common.DataColumnMapping("EventDate", "EventDate")})});
             this.daEvent.UpdateCommand = this.oleDbUpdateCommand1;
-            // 
-            // ctnKai
-            // 
-            this.ctnKai.ConnectionString = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\\Temp\\kai-oordinate.mdb";
-            this.ctnKai.InfoMessage += new System.Data.OleDb.OleDbInfoMessageEventHandler(this.daEvent_InfoMessage);
+            this.daEvent.RowUpdated += new System.Data.OleDb.OleDbRowUpdatedEventHandler(this.daEvent_RowUpdated);
             // 
             // oleDbSelectCommand2
             // 
@@ -179,6 +180,7 @@ namespace Kaioordinate
                         new System.Data.Common.DataColumnMapping("EventID", "EventID"),
                         new System.Data.Common.DataColumnMapping("KaiPreparation", "KaiPreparation")})});
             this.daEventRegister.UpdateCommand = this.oleDbUpdateCommand2;
+            this.daEventRegister.RowUpdated += new System.Data.OleDb.OleDbRowUpdatedEventHandler(this.daEventRegister_RowUpdated);
             // 
             // oleDbSelectCommand3
             // 
@@ -251,6 +253,7 @@ namespace Kaioordinate
                         new System.Data.Common.DataColumnMapping("PreparationMinutes", "PreparationMinutes"),
                         new System.Data.Common.DataColumnMapping("ServeQuantity", "ServeQuantity")})});
             this.daKai.UpdateCommand = this.oleDbUpdateCommand3;
+            this.daKai.RowUpdated += new System.Data.OleDb.OleDbRowUpdatedEventHandler(this.daKai_RowUpdated);
             // 
             // oleDbSelectCommand4
             // 
@@ -303,6 +306,7 @@ namespace Kaioordinate
                         new System.Data.Common.DataColumnMapping("LocationName", "LocationName"),
                         new System.Data.Common.DataColumnMapping("Address", "Address")})});
             this.daLocation.UpdateCommand = this.oleDbUpdateCommand4;
+            this.daLocation.RowUpdated += new System.Data.OleDb.OleDbRowUpdatedEventHandler(this.daLocation_RowUpdated);
             // 
             // oleDbSelectCommand5
             // 
@@ -375,6 +379,7 @@ namespace Kaioordinate
                         new System.Data.Common.DataColumnMapping("Phone", "Phone"),
                         new System.Data.Common.DataColumnMapping("Address", "Address")})});
             this.daWhanau.UpdateCommand = this.oleDbUpdateCommand5;
+            this.daWhanau.RowUpdated += new System.Data.OleDb.OleDbRowUpdatedEventHandler(this.daWhanau_RowUpdated);
             // 
             // dsKaiOordinate
             // 

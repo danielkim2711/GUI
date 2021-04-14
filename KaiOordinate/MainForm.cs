@@ -13,6 +13,7 @@ namespace Kaioordinate
     /// <summary>
     /// reference to the forms
     /// </summary>
+
     public partial class MainForm : Form
     {
         private DataModule DM;
@@ -48,6 +49,12 @@ namespace Kaioordinate
             frmKai.ShowDialog();
         }
 
+        /// <summary>
+        /// open EventForm
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+
         private void btnEvent_Click(object sender, EventArgs e)
         {
             if (frmEvent == null)
@@ -58,6 +65,12 @@ namespace Kaioordinate
 
         }
 
+        /// <summary>
+        /// open WhanauForm
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+
         private void btnWhanau_Click(object sender, EventArgs e)
         {
             if (frmWhanau == null)
@@ -66,6 +79,12 @@ namespace Kaioordinate
             }
             frmWhanau.ShowDialog();
         }
+
+        /// <summary>
+        /// open LocationForm
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
 
         private void btnLocation_Click(object sender, EventArgs e)
         {
@@ -77,6 +96,12 @@ namespace Kaioordinate
 
         }
 
+        /// <summary>
+        /// open EventRegisterForm
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+
         private void btnRegistration_Click(object sender, EventArgs e)
         {
             if (frmEventRegister == null)
@@ -86,6 +111,12 @@ namespace Kaioordinate
             frmEventRegister.ShowDialog();
 
         }
+
+        /// <summary>
+        /// open ReportForm
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
 
         private void btnReport_Click(object sender, EventArgs e)
         {

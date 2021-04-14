@@ -49,19 +49,39 @@ namespace Kaioordinate
             this.lblKaiNo = new System.Windows.Forms.Label();
             this.lstKai = new System.Windows.Forms.ListBox();
             this.pnlAddKai = new System.Windows.Forms.Panel();
-            this.txtAddServingQuantity = new System.Windows.Forms.TextBox();
-            this.txtAddPreparationTime = new System.Windows.Forms.TextBox();
+            this.cboAddEvent = new System.Windows.Forms.ComboBox();
+            this.lblAddMinutes = new System.Windows.Forms.Label();
+            this.btnAddSave = new FontAwesome.Sharp.IconButton();
+            this.numAddServingQuantity = new System.Windows.Forms.NumericUpDown();
+            this.btnAddCancel = new FontAwesome.Sharp.IconButton();
+            this.cbxAddPreparation = new System.Windows.Forms.CheckBox();
+            this.numAddPreparationTime = new System.Windows.Forms.NumericUpDown();
             this.txtAddKaiName = new System.Windows.Forms.TextBox();
-            this.txtAddEvent = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
+            this.lblAddServingQuantity = new System.Windows.Forms.Label();
+            this.lblAddPrepareTime = new System.Windows.Forms.Label();
+            this.lblAddPreparation = new System.Windows.Forms.Label();
             this.lblAddKaiName = new System.Windows.Forms.Label();
             this.lbAddEvent = new System.Windows.Forms.Label();
-            this.cbxAddPreparation = new System.Windows.Forms.CheckBox();
-            this.btnAddSave = new FontAwesome.Sharp.IconButton();
-            this.btnAddCancel = new FontAwesome.Sharp.IconButton();
+            this.pnlUpdateKai = new System.Windows.Forms.Panel();
+            this.cboUpdateEvent = new System.Windows.Forms.ComboBox();
+            this.lblUpdateMinutes = new System.Windows.Forms.Label();
+            this.numUpdateServingQuantity = new System.Windows.Forms.NumericUpDown();
+            this.numUpdatePreparationTime = new System.Windows.Forms.NumericUpDown();
+            this.btnUpdateSave = new FontAwesome.Sharp.IconButton();
+            this.lblUpdateEvent = new System.Windows.Forms.Label();
+            this.btnUpdateCancel = new FontAwesome.Sharp.IconButton();
+            this.lblUpdateKaiName = new System.Windows.Forms.Label();
+            this.lblUpdatePreparation = new System.Windows.Forms.Label();
+            this.cbxUpdatePreparation = new System.Windows.Forms.CheckBox();
+            this.lblUpdatePrepareTime = new System.Windows.Forms.Label();
+            this.lblUpdateServingQuantity = new System.Windows.Forms.Label();
+            this.txtUpdateKaiName = new System.Windows.Forms.TextBox();
             this.pnlAddKai.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numAddServingQuantity)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numAddPreparationTime)).BeginInit();
+            this.pnlUpdateKai.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numUpdateServingQuantity)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numUpdatePreparationTime)).BeginInit();
             this.SuspendLayout();
             // 
             // txtServingQuantity
@@ -253,6 +273,7 @@ namespace Kaioordinate
             // 
             this.btnUp.BackColor = System.Drawing.SystemColors.ControlDark;
             this.btnUp.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnUp.ForeColor = System.Drawing.SystemColors.ControlText;
             this.btnUp.IconChar = FontAwesome.Sharp.IconChar.CaretSquareUp;
             this.btnUp.IconColor = System.Drawing.Color.Black;
             this.btnUp.IconFont = FontAwesome.Sharp.IconFont.Auto;
@@ -298,16 +319,17 @@ namespace Kaioordinate
             // 
             // pnlAddKai
             // 
+            this.pnlAddKai.Controls.Add(this.cboAddEvent);
+            this.pnlAddKai.Controls.Add(this.lblAddMinutes);
             this.pnlAddKai.Controls.Add(this.btnAddSave);
+            this.pnlAddKai.Controls.Add(this.numAddServingQuantity);
             this.pnlAddKai.Controls.Add(this.btnAddCancel);
             this.pnlAddKai.Controls.Add(this.cbxAddPreparation);
-            this.pnlAddKai.Controls.Add(this.txtAddServingQuantity);
-            this.pnlAddKai.Controls.Add(this.txtAddPreparationTime);
+            this.pnlAddKai.Controls.Add(this.numAddPreparationTime);
             this.pnlAddKai.Controls.Add(this.txtAddKaiName);
-            this.pnlAddKai.Controls.Add(this.txtAddEvent);
-            this.pnlAddKai.Controls.Add(this.label1);
-            this.pnlAddKai.Controls.Add(this.label2);
-            this.pnlAddKai.Controls.Add(this.label3);
+            this.pnlAddKai.Controls.Add(this.lblAddServingQuantity);
+            this.pnlAddKai.Controls.Add(this.lblAddPrepareTime);
+            this.pnlAddKai.Controls.Add(this.lblAddPreparation);
             this.pnlAddKai.Controls.Add(this.lblAddKaiName);
             this.pnlAddKai.Controls.Add(this.lbAddEvent);
             this.pnlAddKai.Location = new System.Drawing.Point(293, 21);
@@ -316,23 +338,88 @@ namespace Kaioordinate
             this.pnlAddKai.TabIndex = 32;
             this.pnlAddKai.Visible = false;
             // 
-            // txtAddServingQuantity
+            // cboAddEvent
             // 
-            this.txtAddServingQuantity.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.txtAddServingQuantity.Location = new System.Drawing.Point(198, 210);
-            this.txtAddServingQuantity.Multiline = true;
-            this.txtAddServingQuantity.Name = "txtAddServingQuantity";
-            this.txtAddServingQuantity.Size = new System.Drawing.Size(111, 30);
-            this.txtAddServingQuantity.TabIndex = 22;
+            this.cboAddEvent.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.cboAddEvent.FormattingEnabled = true;
+            this.cboAddEvent.Location = new System.Drawing.Point(198, 13);
+            this.cboAddEvent.Name = "cboAddEvent";
+            this.cboAddEvent.Size = new System.Drawing.Size(247, 32);
+            this.cboAddEvent.TabIndex = 52;
             // 
-            // txtAddPreparationTime
+            // lblAddMinutes
             // 
-            this.txtAddPreparationTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.txtAddPreparationTime.Location = new System.Drawing.Point(198, 162);
-            this.txtAddPreparationTime.Multiline = true;
-            this.txtAddPreparationTime.Name = "txtAddPreparationTime";
-            this.txtAddPreparationTime.Size = new System.Drawing.Size(111, 30);
-            this.txtAddPreparationTime.TabIndex = 21;
+            this.lblAddMinutes.AutoSize = true;
+            this.lblAddMinutes.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.lblAddMinutes.ForeColor = System.Drawing.Color.White;
+            this.lblAddMinutes.Location = new System.Drawing.Point(321, 163);
+            this.lblAddMinutes.Name = "lblAddMinutes";
+            this.lblAddMinutes.Size = new System.Drawing.Size(76, 24);
+            this.lblAddMinutes.TabIndex = 50;
+            this.lblAddMinutes.Text = "minutes";
+            // 
+            // btnAddSave
+            // 
+            this.btnAddSave.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.btnAddSave.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAddSave.IconChar = FontAwesome.Sharp.IconChar.Save;
+            this.btnAddSave.IconColor = System.Drawing.Color.Black;
+            this.btnAddSave.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnAddSave.IconSize = 60;
+            this.btnAddSave.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnAddSave.Location = new System.Drawing.Point(185, 252);
+            this.btnAddSave.Name = "btnAddSave";
+            this.btnAddSave.Size = new System.Drawing.Size(119, 57);
+            this.btnAddSave.TabIndex = 33;
+            this.btnAddSave.Text = "SAVE";
+            this.btnAddSave.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnAddSave.UseVisualStyleBackColor = false;
+            this.btnAddSave.Click += new System.EventHandler(this.btnAddSave_Click);
+            // 
+            // numAddServingQuantity
+            // 
+            this.numAddServingQuantity.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.numAddServingQuantity.Location = new System.Drawing.Point(195, 208);
+            this.numAddServingQuantity.Name = "numAddServingQuantity";
+            this.numAddServingQuantity.Size = new System.Drawing.Size(120, 29);
+            this.numAddServingQuantity.TabIndex = 49;
+            // 
+            // btnAddCancel
+            // 
+            this.btnAddCancel.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.btnAddCancel.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAddCancel.IconChar = FontAwesome.Sharp.IconChar.Times;
+            this.btnAddCancel.IconColor = System.Drawing.Color.Black;
+            this.btnAddCancel.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnAddCancel.IconSize = 60;
+            this.btnAddCancel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnAddCancel.Location = new System.Drawing.Point(332, 252);
+            this.btnAddCancel.Name = "btnAddCancel";
+            this.btnAddCancel.Size = new System.Drawing.Size(135, 57);
+            this.btnAddCancel.TabIndex = 34;
+            this.btnAddCancel.Text = "CANCEL";
+            this.btnAddCancel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnAddCancel.UseVisualStyleBackColor = false;
+            this.btnAddCancel.Click += new System.EventHandler(this.btnAddCancel_Click);
+            // 
+            // cbxAddPreparation
+            // 
+            this.cbxAddPreparation.AutoSize = true;
+            this.cbxAddPreparation.Location = new System.Drawing.Point(198, 125);
+            this.cbxAddPreparation.Name = "cbxAddPreparation";
+            this.cbxAddPreparation.Size = new System.Drawing.Size(15, 14);
+            this.cbxAddPreparation.TabIndex = 32;
+            this.cbxAddPreparation.UseVisualStyleBackColor = true;
+            this.cbxAddPreparation.CheckedChanged += new System.EventHandler(this.cbxAddPreparation_CheckedChanged);
+            // 
+            // numAddPreparationTime
+            // 
+            this.numAddPreparationTime.Enabled = false;
+            this.numAddPreparationTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.numAddPreparationTime.Location = new System.Drawing.Point(195, 158);
+            this.numAddPreparationTime.Name = "numAddPreparationTime";
+            this.numAddPreparationTime.Size = new System.Drawing.Size(120, 29);
+            this.numAddPreparationTime.TabIndex = 48;
             // 
             // txtAddKaiName
             // 
@@ -343,47 +430,38 @@ namespace Kaioordinate
             this.txtAddKaiName.Size = new System.Drawing.Size(247, 30);
             this.txtAddKaiName.TabIndex = 19;
             // 
-            // txtAddEvent
+            // lblAddServingQuantity
             // 
-            this.txtAddEvent.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.txtAddEvent.Location = new System.Drawing.Point(198, 13);
-            this.txtAddEvent.Multiline = true;
-            this.txtAddEvent.Name = "txtAddEvent";
-            this.txtAddEvent.Size = new System.Drawing.Size(247, 30);
-            this.txtAddEvent.TabIndex = 18;
+            this.lblAddServingQuantity.AutoSize = true;
+            this.lblAddServingQuantity.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.lblAddServingQuantity.ForeColor = System.Drawing.Color.White;
+            this.lblAddServingQuantity.Location = new System.Drawing.Point(42, 216);
+            this.lblAddServingQuantity.Name = "lblAddServingQuantity";
+            this.lblAddServingQuantity.Size = new System.Drawing.Size(147, 24);
+            this.lblAddServingQuantity.TabIndex = 17;
+            this.lblAddServingQuantity.Text = "Serving Quantity";
             // 
-            // label1
+            // lblAddPrepareTime
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(42, 216);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(147, 24);
-            this.label1.TabIndex = 17;
-            this.label1.Text = "Serving Quantity";
+            this.lblAddPrepareTime.AutoSize = true;
+            this.lblAddPrepareTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.lblAddPrepareTime.ForeColor = System.Drawing.Color.White;
+            this.lblAddPrepareTime.Location = new System.Drawing.Point(61, 163);
+            this.lblAddPrepareTime.Name = "lblAddPrepareTime";
+            this.lblAddPrepareTime.Size = new System.Drawing.Size(125, 24);
+            this.lblAddPrepareTime.TabIndex = 16;
+            this.lblAddPrepareTime.Text = "Prepare Time";
             // 
-            // label2
+            // lblAddPreparation
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(35, 168);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(154, 24);
-            this.label2.TabIndex = 16;
-            this.label2.Text = "Preparation Time";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(73, 118);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(116, 24);
-            this.label3.TabIndex = 15;
-            this.label3.Text = "Preparation?";
+            this.lblAddPreparation.AutoSize = true;
+            this.lblAddPreparation.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.lblAddPreparation.ForeColor = System.Drawing.Color.White;
+            this.lblAddPreparation.Location = new System.Drawing.Point(73, 118);
+            this.lblAddPreparation.Name = "lblAddPreparation";
+            this.lblAddPreparation.Size = new System.Drawing.Size(116, 24);
+            this.lblAddPreparation.TabIndex = 15;
+            this.lblAddPreparation.Text = "Preparation?";
             // 
             // lblAddKaiName
             // 
@@ -407,50 +485,173 @@ namespace Kaioordinate
             this.lbAddEvent.TabIndex = 13;
             this.lbAddEvent.Text = "Event";
             // 
-            // cbxAddPreparation
+            // pnlUpdateKai
             // 
-            this.cbxAddPreparation.AutoSize = true;
-            this.cbxAddPreparation.Location = new System.Drawing.Point(198, 125);
-            this.cbxAddPreparation.Name = "cbxAddPreparation";
-            this.cbxAddPreparation.Size = new System.Drawing.Size(15, 14);
-            this.cbxAddPreparation.TabIndex = 32;
-            this.cbxAddPreparation.UseVisualStyleBackColor = true;
+            this.pnlUpdateKai.Controls.Add(this.cboUpdateEvent);
+            this.pnlUpdateKai.Controls.Add(this.lblUpdateMinutes);
+            this.pnlUpdateKai.Controls.Add(this.numUpdateServingQuantity);
+            this.pnlUpdateKai.Controls.Add(this.numUpdatePreparationTime);
+            this.pnlUpdateKai.Controls.Add(this.btnUpdateSave);
+            this.pnlUpdateKai.Controls.Add(this.lblUpdateEvent);
+            this.pnlUpdateKai.Controls.Add(this.btnUpdateCancel);
+            this.pnlUpdateKai.Controls.Add(this.lblUpdateKaiName);
+            this.pnlUpdateKai.Controls.Add(this.lblUpdatePreparation);
+            this.pnlUpdateKai.Controls.Add(this.cbxUpdatePreparation);
+            this.pnlUpdateKai.Controls.Add(this.lblUpdatePrepareTime);
+            this.pnlUpdateKai.Controls.Add(this.lblUpdateServingQuantity);
+            this.pnlUpdateKai.Controls.Add(this.txtUpdateKaiName);
+            this.pnlUpdateKai.Location = new System.Drawing.Point(292, 21);
+            this.pnlUpdateKai.Name = "pnlUpdateKai";
+            this.pnlUpdateKai.Size = new System.Drawing.Size(479, 318);
+            this.pnlUpdateKai.TabIndex = 47;
+            this.pnlUpdateKai.Visible = false;
             // 
-            // btnAddSave
+            // cboUpdateEvent
             // 
-            this.btnAddSave.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.btnAddSave.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAddSave.IconChar = FontAwesome.Sharp.IconChar.Save;
-            this.btnAddSave.IconColor = System.Drawing.Color.Black;
-            this.btnAddSave.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnAddSave.IconSize = 60;
-            this.btnAddSave.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAddSave.Location = new System.Drawing.Point(185, 252);
-            this.btnAddSave.Name = "btnAddSave";
-            this.btnAddSave.Size = new System.Drawing.Size(119, 57);
-            this.btnAddSave.TabIndex = 33;
-            this.btnAddSave.Text = "SAVE";
-            this.btnAddSave.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnAddSave.UseVisualStyleBackColor = false;
-            this.btnAddSave.Click += new System.EventHandler(this.btnAddSave_Click);
+            this.cboUpdateEvent.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.cboUpdateEvent.FormattingEnabled = true;
+            this.cboUpdateEvent.Location = new System.Drawing.Point(192, 21);
+            this.cboUpdateEvent.Name = "cboUpdateEvent";
+            this.cboUpdateEvent.Size = new System.Drawing.Size(247, 32);
+            this.cboUpdateEvent.TabIndex = 48;
             // 
-            // btnAddCancel
+            // lblUpdateMinutes
             // 
-            this.btnAddCancel.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.btnAddCancel.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAddCancel.IconChar = FontAwesome.Sharp.IconChar.Times;
-            this.btnAddCancel.IconColor = System.Drawing.Color.Black;
-            this.btnAddCancel.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnAddCancel.IconSize = 60;
-            this.btnAddCancel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAddCancel.Location = new System.Drawing.Point(332, 252);
-            this.btnAddCancel.Name = "btnAddCancel";
-            this.btnAddCancel.Size = new System.Drawing.Size(135, 57);
-            this.btnAddCancel.TabIndex = 34;
-            this.btnAddCancel.Text = "CANCEL";
-            this.btnAddCancel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnAddCancel.UseVisualStyleBackColor = false;
-            this.btnAddCancel.Click += new System.EventHandler(this.btnAddCancel_Click);
+            this.lblUpdateMinutes.AutoSize = true;
+            this.lblUpdateMinutes.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.lblUpdateMinutes.ForeColor = System.Drawing.Color.White;
+            this.lblUpdateMinutes.Location = new System.Drawing.Point(318, 168);
+            this.lblUpdateMinutes.Name = "lblUpdateMinutes";
+            this.lblUpdateMinutes.Size = new System.Drawing.Size(76, 24);
+            this.lblUpdateMinutes.TabIndex = 51;
+            this.lblUpdateMinutes.Text = "minutes";
+            // 
+            // numUpdateServingQuantity
+            // 
+            this.numUpdateServingQuantity.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.numUpdateServingQuantity.Location = new System.Drawing.Point(192, 208);
+            this.numUpdateServingQuantity.Name = "numUpdateServingQuantity";
+            this.numUpdateServingQuantity.Size = new System.Drawing.Size(120, 29);
+            this.numUpdateServingQuantity.TabIndex = 47;
+            // 
+            // numUpdatePreparationTime
+            // 
+            this.numUpdatePreparationTime.Enabled = false;
+            this.numUpdatePreparationTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.numUpdatePreparationTime.Location = new System.Drawing.Point(192, 160);
+            this.numUpdatePreparationTime.Name = "numUpdatePreparationTime";
+            this.numUpdatePreparationTime.Size = new System.Drawing.Size(120, 29);
+            this.numUpdatePreparationTime.TabIndex = 33;
+            // 
+            // btnUpdateSave
+            // 
+            this.btnUpdateSave.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.btnUpdateSave.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnUpdateSave.IconChar = FontAwesome.Sharp.IconChar.Save;
+            this.btnUpdateSave.IconColor = System.Drawing.Color.Black;
+            this.btnUpdateSave.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnUpdateSave.IconSize = 60;
+            this.btnUpdateSave.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnUpdateSave.Location = new System.Drawing.Point(179, 255);
+            this.btnUpdateSave.Name = "btnUpdateSave";
+            this.btnUpdateSave.Size = new System.Drawing.Size(119, 57);
+            this.btnUpdateSave.TabIndex = 45;
+            this.btnUpdateSave.Text = "SAVE";
+            this.btnUpdateSave.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnUpdateSave.UseVisualStyleBackColor = false;
+            this.btnUpdateSave.Click += new System.EventHandler(this.btnUpdateSave_Click);
+            // 
+            // lblUpdateEvent
+            // 
+            this.lblUpdateEvent.AutoSize = true;
+            this.lblUpdateEvent.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.lblUpdateEvent.ForeColor = System.Drawing.Color.White;
+            this.lblUpdateEvent.Location = new System.Drawing.Point(122, 22);
+            this.lblUpdateEvent.Name = "lblUpdateEvent";
+            this.lblUpdateEvent.Size = new System.Drawing.Size(58, 24);
+            this.lblUpdateEvent.TabIndex = 35;
+            this.lblUpdateEvent.Text = "Event";
+            // 
+            // btnUpdateCancel
+            // 
+            this.btnUpdateCancel.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.btnUpdateCancel.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnUpdateCancel.IconChar = FontAwesome.Sharp.IconChar.Times;
+            this.btnUpdateCancel.IconColor = System.Drawing.Color.Black;
+            this.btnUpdateCancel.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnUpdateCancel.IconSize = 60;
+            this.btnUpdateCancel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnUpdateCancel.Location = new System.Drawing.Point(326, 255);
+            this.btnUpdateCancel.Name = "btnUpdateCancel";
+            this.btnUpdateCancel.Size = new System.Drawing.Size(135, 57);
+            this.btnUpdateCancel.TabIndex = 46;
+            this.btnUpdateCancel.Text = "CANCEL";
+            this.btnUpdateCancel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnUpdateCancel.UseVisualStyleBackColor = false;
+            this.btnUpdateCancel.Click += new System.EventHandler(this.btnUpdateCancel_Click);
+            // 
+            // lblUpdateKaiName
+            // 
+            this.lblUpdateKaiName.AutoSize = true;
+            this.lblUpdateKaiName.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.lblUpdateKaiName.ForeColor = System.Drawing.Color.White;
+            this.lblUpdateKaiName.Location = new System.Drawing.Point(91, 73);
+            this.lblUpdateKaiName.Name = "lblUpdateKaiName";
+            this.lblUpdateKaiName.Size = new System.Drawing.Size(92, 24);
+            this.lblUpdateKaiName.TabIndex = 36;
+            this.lblUpdateKaiName.Text = "Kai Name";
+            // 
+            // lblUpdatePreparation
+            // 
+            this.lblUpdatePreparation.AutoSize = true;
+            this.lblUpdatePreparation.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.lblUpdatePreparation.ForeColor = System.Drawing.Color.White;
+            this.lblUpdatePreparation.Location = new System.Drawing.Point(67, 121);
+            this.lblUpdatePreparation.Name = "lblUpdatePreparation";
+            this.lblUpdatePreparation.Size = new System.Drawing.Size(116, 24);
+            this.lblUpdatePreparation.TabIndex = 37;
+            this.lblUpdatePreparation.Text = "Preparation?";
+            // 
+            // cbxUpdatePreparation
+            // 
+            this.cbxUpdatePreparation.AutoSize = true;
+            this.cbxUpdatePreparation.Location = new System.Drawing.Point(192, 128);
+            this.cbxUpdatePreparation.Name = "cbxUpdatePreparation";
+            this.cbxUpdatePreparation.Size = new System.Drawing.Size(15, 14);
+            this.cbxUpdatePreparation.TabIndex = 44;
+            this.cbxUpdatePreparation.UseVisualStyleBackColor = true;
+            this.cbxUpdatePreparation.CheckedChanged += new System.EventHandler(this.cbxUpdatePreparation_CheckedChanged);
+            // 
+            // lblUpdatePrepareTime
+            // 
+            this.lblUpdatePrepareTime.AutoSize = true;
+            this.lblUpdatePrepareTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.lblUpdatePrepareTime.ForeColor = System.Drawing.Color.White;
+            this.lblUpdatePrepareTime.Location = new System.Drawing.Point(55, 168);
+            this.lblUpdatePrepareTime.Name = "lblUpdatePrepareTime";
+            this.lblUpdatePrepareTime.Size = new System.Drawing.Size(125, 24);
+            this.lblUpdatePrepareTime.TabIndex = 38;
+            this.lblUpdatePrepareTime.Text = "Prepare Time";
+            // 
+            // lblUpdateServingQuantity
+            // 
+            this.lblUpdateServingQuantity.AutoSize = true;
+            this.lblUpdateServingQuantity.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.lblUpdateServingQuantity.ForeColor = System.Drawing.Color.White;
+            this.lblUpdateServingQuantity.Location = new System.Drawing.Point(36, 219);
+            this.lblUpdateServingQuantity.Name = "lblUpdateServingQuantity";
+            this.lblUpdateServingQuantity.Size = new System.Drawing.Size(147, 24);
+            this.lblUpdateServingQuantity.TabIndex = 39;
+            this.lblUpdateServingQuantity.Text = "Serving Quantity";
+            // 
+            // txtUpdateKaiName
+            // 
+            this.txtUpdateKaiName.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.txtUpdateKaiName.Location = new System.Drawing.Point(192, 67);
+            this.txtUpdateKaiName.Multiline = true;
+            this.txtUpdateKaiName.Name = "txtUpdateKaiName";
+            this.txtUpdateKaiName.Size = new System.Drawing.Size(247, 30);
+            this.txtUpdateKaiName.TabIndex = 41;
             // 
             // KaiForm
             // 
@@ -458,6 +659,7 @@ namespace Kaioordinate
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(73)))), ((int)(((byte)(41)))));
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.pnlUpdateKai);
             this.Controls.Add(this.pnlAddKai);
             this.Controls.Add(this.btnReturn);
             this.Controls.Add(this.txtServingQuantity);
@@ -482,6 +684,12 @@ namespace Kaioordinate
             this.Text = "Kai Management";
             this.pnlAddKai.ResumeLayout(false);
             this.pnlAddKai.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numAddServingQuantity)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numAddPreparationTime)).EndInit();
+            this.pnlUpdateKai.ResumeLayout(false);
+            this.pnlUpdateKai.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numUpdateServingQuantity)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numUpdatePreparationTime)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -509,16 +717,31 @@ namespace Kaioordinate
         private System.Windows.Forms.ListBox lstKai;
         private System.Windows.Forms.Panel pnlAddKai;
         private System.Windows.Forms.TextBox txtAddKaiName;
-        private System.Windows.Forms.TextBox txtAddEvent;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label lblAddServingQuantity;
+        private System.Windows.Forms.Label lblAddPrepareTime;
+        private System.Windows.Forms.Label lblAddPreparation;
         private System.Windows.Forms.Label lblAddKaiName;
         private System.Windows.Forms.Label lbAddEvent;
-        private System.Windows.Forms.TextBox txtAddServingQuantity;
-        private System.Windows.Forms.TextBox txtAddPreparationTime;
         private System.Windows.Forms.CheckBox cbxAddPreparation;
         private FontAwesome.Sharp.IconButton btnAddSave;
         private FontAwesome.Sharp.IconButton btnAddCancel;
+        private FontAwesome.Sharp.IconButton btnUpdateSave;
+        private FontAwesome.Sharp.IconButton btnUpdateCancel;
+        private System.Windows.Forms.CheckBox cbxUpdatePreparation;
+        private System.Windows.Forms.TextBox txtUpdateKaiName;
+        private System.Windows.Forms.Label lblUpdateServingQuantity;
+        private System.Windows.Forms.Label lblUpdatePrepareTime;
+        private System.Windows.Forms.Label lblUpdatePreparation;
+        private System.Windows.Forms.Label lblUpdateKaiName;
+        private System.Windows.Forms.Label lblUpdateEvent;
+        private System.Windows.Forms.Panel pnlUpdateKai;
+        private System.Windows.Forms.Label lblAddMinutes;
+        private System.Windows.Forms.NumericUpDown numAddServingQuantity;
+        private System.Windows.Forms.NumericUpDown numAddPreparationTime;
+        private System.Windows.Forms.NumericUpDown numUpdateServingQuantity;
+        private System.Windows.Forms.NumericUpDown numUpdatePreparationTime;
+        private System.Windows.Forms.Label lblUpdateMinutes;
+        private System.Windows.Forms.ComboBox cboUpdateEvent;
+        private System.Windows.Forms.ComboBox cboAddEvent;
     }
 }

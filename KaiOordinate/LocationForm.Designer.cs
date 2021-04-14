@@ -42,6 +42,22 @@ namespace Kaioordinate
             this.lblLocationNo = new System.Windows.Forms.Label();
             this.lstLocation = new System.Windows.Forms.ListBox();
             this.lblAddress = new System.Windows.Forms.Label();
+            this.lblAddAddress = new System.Windows.Forms.Label();
+            this.txtAddAddress = new System.Windows.Forms.TextBox();
+            this.txtAddLocationName = new System.Windows.Forms.TextBox();
+            this.lblAddLocationName = new System.Windows.Forms.Label();
+            this.pnlAddLocation = new System.Windows.Forms.Panel();
+            this.btnAddSave = new FontAwesome.Sharp.IconButton();
+            this.btnAddCancel = new FontAwesome.Sharp.IconButton();
+            this.btnUpdateSave = new FontAwesome.Sharp.IconButton();
+            this.btnUpdateCancel = new FontAwesome.Sharp.IconButton();
+            this.txtUpdateLocationName = new System.Windows.Forms.TextBox();
+            this.lblUpdateAddress = new System.Windows.Forms.Label();
+            this.lblUpdateLocationName = new System.Windows.Forms.Label();
+            this.txtUpdateAddress = new System.Windows.Forms.TextBox();
+            this.pnlUpdateLocation = new System.Windows.Forms.Panel();
+            this.pnlAddLocation.SuspendLayout();
+            this.pnlUpdateLocation.SuspendLayout();
             this.SuspendLayout();
             // 
             // txtAddress
@@ -216,12 +232,194 @@ namespace Kaioordinate
             this.lblAddress.TabIndex = 39;
             this.lblAddress.Text = "Address";
             // 
+            // lblAddAddress
+            // 
+            this.lblAddAddress.AutoSize = true;
+            this.lblAddAddress.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.lblAddAddress.ForeColor = System.Drawing.Color.White;
+            this.lblAddAddress.Location = new System.Drawing.Point(117, 93);
+            this.lblAddAddress.Name = "lblAddAddress";
+            this.lblAddAddress.Size = new System.Drawing.Size(80, 24);
+            this.lblAddAddress.TabIndex = 45;
+            this.lblAddAddress.Text = "Address";
+            // 
+            // txtAddAddress
+            // 
+            this.txtAddAddress.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.txtAddAddress.Location = new System.Drawing.Point(206, 75);
+            this.txtAddAddress.Multiline = true;
+            this.txtAddAddress.Name = "txtAddAddress";
+            this.txtAddAddress.Size = new System.Drawing.Size(247, 159);
+            this.txtAddAddress.TabIndex = 42;
+            // 
+            // txtAddLocationName
+            // 
+            this.txtAddLocationName.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.txtAddLocationName.Location = new System.Drawing.Point(206, 27);
+            this.txtAddLocationName.Multiline = true;
+            this.txtAddLocationName.Name = "txtAddLocationName";
+            this.txtAddLocationName.Size = new System.Drawing.Size(247, 30);
+            this.txtAddLocationName.TabIndex = 41;
+            // 
+            // lblAddLocationName
+            // 
+            this.lblAddLocationName.AutoSize = true;
+            this.lblAddLocationName.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.lblAddLocationName.ForeColor = System.Drawing.Color.White;
+            this.lblAddLocationName.Location = new System.Drawing.Point(60, 35);
+            this.lblAddLocationName.Name = "lblAddLocationName";
+            this.lblAddLocationName.Size = new System.Drawing.Size(137, 24);
+            this.lblAddLocationName.TabIndex = 40;
+            this.lblAddLocationName.Text = "Location Name";
+            // 
+            // pnlAddLocation
+            // 
+            this.pnlAddLocation.Controls.Add(this.btnAddSave);
+            this.pnlAddLocation.Controls.Add(this.btnAddCancel);
+            this.pnlAddLocation.Controls.Add(this.txtAddLocationName);
+            this.pnlAddLocation.Controls.Add(this.lblAddAddress);
+            this.pnlAddLocation.Controls.Add(this.lblAddLocationName);
+            this.pnlAddLocation.Controls.Add(this.txtAddAddress);
+            this.pnlAddLocation.Location = new System.Drawing.Point(275, 12);
+            this.pnlAddLocation.Name = "pnlAddLocation";
+            this.pnlAddLocation.Size = new System.Drawing.Size(497, 327);
+            this.pnlAddLocation.TabIndex = 46;
+            this.pnlAddLocation.Visible = false;
+            // 
+            // btnAddSave
+            // 
+            this.btnAddSave.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.btnAddSave.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAddSave.IconChar = FontAwesome.Sharp.IconChar.Save;
+            this.btnAddSave.IconColor = System.Drawing.Color.Black;
+            this.btnAddSave.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnAddSave.IconSize = 60;
+            this.btnAddSave.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnAddSave.Location = new System.Drawing.Point(165, 250);
+            this.btnAddSave.Name = "btnAddSave";
+            this.btnAddSave.Size = new System.Drawing.Size(119, 57);
+            this.btnAddSave.TabIndex = 90;
+            this.btnAddSave.Text = "SAVE";
+            this.btnAddSave.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnAddSave.UseVisualStyleBackColor = false;
+            this.btnAddSave.Click += new System.EventHandler(this.btnAddSave_Click);
+            // 
+            // btnAddCancel
+            // 
+            this.btnAddCancel.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.btnAddCancel.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAddCancel.IconChar = FontAwesome.Sharp.IconChar.Times;
+            this.btnAddCancel.IconColor = System.Drawing.Color.Black;
+            this.btnAddCancel.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnAddCancel.IconSize = 60;
+            this.btnAddCancel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnAddCancel.Location = new System.Drawing.Point(312, 250);
+            this.btnAddCancel.Name = "btnAddCancel";
+            this.btnAddCancel.Size = new System.Drawing.Size(135, 57);
+            this.btnAddCancel.TabIndex = 91;
+            this.btnAddCancel.Text = "CANCEL";
+            this.btnAddCancel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnAddCancel.UseVisualStyleBackColor = false;
+            this.btnAddCancel.Click += new System.EventHandler(this.btnAddCancel_Click);
+            // 
+            // btnUpdateSave
+            // 
+            this.btnUpdateSave.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.btnUpdateSave.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnUpdateSave.IconChar = FontAwesome.Sharp.IconChar.Save;
+            this.btnUpdateSave.IconColor = System.Drawing.Color.Black;
+            this.btnUpdateSave.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnUpdateSave.IconSize = 60;
+            this.btnUpdateSave.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnUpdateSave.Location = new System.Drawing.Point(165, 250);
+            this.btnUpdateSave.Name = "btnUpdateSave";
+            this.btnUpdateSave.Size = new System.Drawing.Size(119, 57);
+            this.btnUpdateSave.TabIndex = 96;
+            this.btnUpdateSave.Text = "SAVE";
+            this.btnUpdateSave.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnUpdateSave.UseVisualStyleBackColor = false;
+            this.btnUpdateSave.Click += new System.EventHandler(this.btnUpdateSave_Click);
+            // 
+            // btnUpdateCancel
+            // 
+            this.btnUpdateCancel.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.btnUpdateCancel.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnUpdateCancel.IconChar = FontAwesome.Sharp.IconChar.Times;
+            this.btnUpdateCancel.IconColor = System.Drawing.Color.Black;
+            this.btnUpdateCancel.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnUpdateCancel.IconSize = 60;
+            this.btnUpdateCancel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnUpdateCancel.Location = new System.Drawing.Point(312, 250);
+            this.btnUpdateCancel.Name = "btnUpdateCancel";
+            this.btnUpdateCancel.Size = new System.Drawing.Size(135, 57);
+            this.btnUpdateCancel.TabIndex = 97;
+            this.btnUpdateCancel.Text = "CANCEL";
+            this.btnUpdateCancel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnUpdateCancel.UseVisualStyleBackColor = false;
+            this.btnUpdateCancel.Click += new System.EventHandler(this.btnUpdateCancel_Click);
+            // 
+            // txtUpdateLocationName
+            // 
+            this.txtUpdateLocationName.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.txtUpdateLocationName.Location = new System.Drawing.Point(206, 27);
+            this.txtUpdateLocationName.Multiline = true;
+            this.txtUpdateLocationName.Name = "txtUpdateLocationName";
+            this.txtUpdateLocationName.Size = new System.Drawing.Size(247, 30);
+            this.txtUpdateLocationName.TabIndex = 93;
+            // 
+            // lblUpdateAddress
+            // 
+            this.lblUpdateAddress.AutoSize = true;
+            this.lblUpdateAddress.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.lblUpdateAddress.ForeColor = System.Drawing.Color.White;
+            this.lblUpdateAddress.Location = new System.Drawing.Point(117, 93);
+            this.lblUpdateAddress.Name = "lblUpdateAddress";
+            this.lblUpdateAddress.Size = new System.Drawing.Size(80, 24);
+            this.lblUpdateAddress.TabIndex = 95;
+            this.lblUpdateAddress.Text = "Address";
+            // 
+            // lblUpdateLocationName
+            // 
+            this.lblUpdateLocationName.AutoSize = true;
+            this.lblUpdateLocationName.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.lblUpdateLocationName.ForeColor = System.Drawing.Color.White;
+            this.lblUpdateLocationName.Location = new System.Drawing.Point(60, 35);
+            this.lblUpdateLocationName.Name = "lblUpdateLocationName";
+            this.lblUpdateLocationName.Size = new System.Drawing.Size(137, 24);
+            this.lblUpdateLocationName.TabIndex = 92;
+            this.lblUpdateLocationName.Text = "Location Name";
+            // 
+            // txtUpdateAddress
+            // 
+            this.txtUpdateAddress.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.txtUpdateAddress.Location = new System.Drawing.Point(206, 75);
+            this.txtUpdateAddress.Multiline = true;
+            this.txtUpdateAddress.Name = "txtUpdateAddress";
+            this.txtUpdateAddress.Size = new System.Drawing.Size(247, 159);
+            this.txtUpdateAddress.TabIndex = 94;
+            // 
+            // pnlUpdateLocation
+            // 
+            this.pnlUpdateLocation.Controls.Add(this.txtUpdateAddress);
+            this.pnlUpdateLocation.Controls.Add(this.btnUpdateSave);
+            this.pnlUpdateLocation.Controls.Add(this.lblUpdateLocationName);
+            this.pnlUpdateLocation.Controls.Add(this.lblUpdateAddress);
+            this.pnlUpdateLocation.Controls.Add(this.btnUpdateCancel);
+            this.pnlUpdateLocation.Controls.Add(this.txtUpdateLocationName);
+            this.pnlUpdateLocation.Location = new System.Drawing.Point(275, 12);
+            this.pnlUpdateLocation.Name = "pnlUpdateLocation";
+            this.pnlUpdateLocation.Size = new System.Drawing.Size(497, 327);
+            this.pnlUpdateLocation.TabIndex = 98;
+            this.pnlUpdateLocation.Visible = false;
+            // 
             // LocationForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(73)))), ((int)(((byte)(41)))));
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.pnlUpdateLocation);
+            this.Controls.Add(this.pnlAddLocation);
             this.Controls.Add(this.lblAddress);
             this.Controls.Add(this.btnReturn);
             this.Controls.Add(this.btnDelete);
@@ -237,6 +435,10 @@ namespace Kaioordinate
             this.Controls.Add(this.lblLocationName);
             this.Name = "LocationForm";
             this.Text = "Location Management";
+            this.pnlAddLocation.ResumeLayout(false);
+            this.pnlAddLocation.PerformLayout();
+            this.pnlUpdateLocation.ResumeLayout(false);
+            this.pnlUpdateLocation.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -256,5 +458,19 @@ namespace Kaioordinate
         private System.Windows.Forms.Label lblLocationNo;
         private System.Windows.Forms.ListBox lstLocation;
         private System.Windows.Forms.Label lblAddress;
+        private System.Windows.Forms.Label lblAddAddress;
+        private System.Windows.Forms.TextBox txtAddAddress;
+        private System.Windows.Forms.TextBox txtAddLocationName;
+        private System.Windows.Forms.Label lblAddLocationName;
+        private System.Windows.Forms.Panel pnlAddLocation;
+        private FontAwesome.Sharp.IconButton btnAddSave;
+        private FontAwesome.Sharp.IconButton btnAddCancel;
+        private FontAwesome.Sharp.IconButton btnUpdateSave;
+        private FontAwesome.Sharp.IconButton btnUpdateCancel;
+        private System.Windows.Forms.TextBox txtUpdateLocationName;
+        private System.Windows.Forms.Label lblUpdateAddress;
+        private System.Windows.Forms.Label lblUpdateLocationName;
+        private System.Windows.Forms.TextBox txtUpdateAddress;
+        private System.Windows.Forms.Panel pnlUpdateLocation;
     }
 }

@@ -14,13 +14,30 @@ namespace Kaioordinate
     {
         private DataModule DM;
         private MainForm frmMenu;
-        private CurrencyManager currencyManager;
+        private int amountOfReportsPrinted, pagesAmountExpected;
+        private DataRow[] reportForPrint;
 
         public ReportForm(DataModule dm, MainForm mnu)
         {
             InitializeComponent();
             DM = dm;
             frmMenu = mnu;
+        }
+
+        private void btnGenerateReport_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        /// <summary>
+        /// close the ReportForm
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+
+        private void btnReturn_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }

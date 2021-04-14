@@ -35,8 +35,9 @@ namespace Kaioordinate
         }
 
         /// <summary>
-        /// bind the data in the Kai table to the text boxes and the listbox
+        /// bind the data in the Kai table
         /// </summary>
+
         public void BindControls()
         {
             txtKaiNo.DataBindings.Add("Text", DM.dsKaiOordinate, "Kai.KaiID");
@@ -45,6 +46,8 @@ namespace Kaioordinate
             txtPreparation.DataBindings.Add("Text", DM.dsKaiOordinate, "Kai.PreparationRequired");
             txtPreparationTime.DataBindings.Add("Text", DM.dsKaiOordinate, "Kai.PreparationMinutes");
             txtServingQuantity.DataBindings.Add("Text", DM.dsKaiOordinate, "Kai.ServeQuantity");
+            cboAddEvent.DataBindings.Add("Text", DM.dsKaiOordinate, "Event.EventName");
+            cboUpdateEvent.DataBindings.Add("Text", DM.dsKaiOordinate, "Event.EventName");
             lstKai.DataSource = DM.dsKaiOordinate;
             lstKai.DisplayMember = "Kai.KaiName";
             lstKai.ValueMember = "Kai.KaiName";
@@ -81,20 +84,27 @@ namespace Kaioordinate
         }
 
         /// <summary>
-        /// once Add button is clicked, show the panel and make buttons invisible
+        /// once Add button is clicked, show the Add panel and make buttons invisible
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            ChangePanelVis(pnlAddKai, true);
+            ChangeAddPanelVis(pnlAddKai, true);
             ChangeButtonVis(false);
         }
 
+        /// <summary>
+        /// once Update button is clicked, show the Update panel and make buttons invisible
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-
+            ChangeUpdatePanelVis(pnlUpdateKai, true);
+            ChangeButtonVis(false);
         }
 
         /// <summary>
@@ -106,14 +116,16 @@ namespace Kaioordinate
         private void btnDelete_Click(object sender, EventArgs e)
         {
             DataRow deleteKaiRow = DM.dtKai.Rows[cmKai.Position];
-            DataRow[] eventKaiRow = DM.dtEvent.Select("KaiID = " + txtKaiNo.Text);
-            if (eventKaiRow.Length != 0)
+            DataRow[] EventRow = DM.dtEvent.Select("EventID = " + txtKaiNo.Text);
+
+            if (EventRow.Length != 0)
             {
                 MessageBox.Show("You may only delete Kai that have no event relation", "Error");
             }
+
             else
             {
-                if (MessageBox.Show("Are you sure you want to delete this record?", "Warning",
+                if (MessageBox.Show("Would you like to delete this record?", "Warning",
                 MessageBoxButtons.OKCancel) == DialogResult.OK)
                 {
                     deleteKaiRow.Delete();
@@ -134,36 +146,96 @@ namespace Kaioordinate
             Close();
         }
 
-        private void lstKai_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            var eventID = DM.dtKai.Rows[cmKai.Position]["EventID"];
-            cmEvent.Position = DM.dvEvent.Find(eventID);
-        }
+        /// <summary>
+        /// Add a record
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
 
         private void btnAddSave_Click(object sender, EventArgs e)
         {
+            DataRow newKaiRow = DM.dtKai.NewRow();
 
+            if ((txtAddKaiName.Text == "") || (numAddServingQuantity.Value == 0))
+            {
+                MessageBox.Show("Please type in a Kai Name and Serving Quantity", "Error");
+            }
+
+            else
+            {
+                newKaiRow["KaiName"] = txtAddKaiName.Text;
+                newKaiRow["PreparationRequired"] = cbxAddPreparation.Checked;
+                newKaiRow["PreparationMinutes"] = numAddPreparationTime.Value;
+                newKaiRow["ServeQuantity"] = numAddServingQuantity.Value;
+
+                DM.dtKai.Rows.Add(newKaiRow);
+                MessageBox.Show("Kai added successfully", "Success");
+                DM.UpdateKai();
+            }
         }
 
         /// <summary>
-        /// show the panel
+        /// close the Add panel and make buttons visible
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
 
         private void btnAddCancel_Click(object sender, EventArgs e)
         {
-            ChangePanelVis(pnlAddKai, false);
+            ChangeAddPanelVis(pnlAddKai, false);
             ChangeButtonVis(true);
         }
 
         /// <summary>
-        /// set a panel visible or invisible
+        /// update an existing record
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+
+        private void btnUpdateSave_Click(object sender, EventArgs e)
+        {
+            DataRow updateKaiRow = DM.dtKai.Rows[cmKai.Position];
+            DataRow updateEventRow = DM.dtEvent.Rows[cmEvent.Position];
+
+            if ((txtUpdateKaiName.Text == "") || (numUpdateServingQuantity.Value == 0))
+            {
+                MessageBox.Show("Please type in a Kai Name and Serving Quantity", "Error");
+            }
+
+            else
+            {
+                updateKaiRow["KaiName"] = txtUpdateKaiName.Text;
+                updateEventRow["EventName"] = cboUpdateEvent.Text;
+                updateKaiRow["PreparationRequired"] = cbxUpdatePreparation.Checked;
+                updateKaiRow["PreparationMinutes"] = numUpdatePreparationTime.Value;
+                updateKaiRow["ServeQuantity"] = numUpdateServingQuantity.Value;
+
+                cmKai.EndCurrentEdit();
+                DM.UpdateKai();
+
+                MessageBox.Show("Kai updated successfully", "Success");
+            }
+        }
+
+        /// <summary>
+        /// close the Update panel and make buttons visible
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+
+        private void btnUpdateCancel_Click(object sender, EventArgs e)
+        {
+            ChangeUpdatePanelVis(pnlUpdateKai, false);
+            ChangeButtonVis(true);
+        }
+
+        /// <summary>
+        /// set Add panel visible or invisible
         /// </summary>
         /// <param name="pnlAddKai"></param>
         /// <param name="makeVisible"></param>
 
-        private void ChangePanelVis(Panel pnlAddKai, bool makeVisible)
+        private void ChangeAddPanelVis(Panel pnlAddKai, bool makeVisible)
         {
             pnlAddKai.Visible = makeVisible;
 
@@ -174,9 +246,26 @@ namespace Kaioordinate
         }
 
         /// <summary>
+        /// set Update panel visible or invisible
+        /// </summary>
+        /// <param name="pnlUpdateKai"></param>
+        /// <param name="makeVisible"></param>
+
+        private void ChangeUpdatePanelVis(Panel pnlUpdateKai, bool makeVisible)
+        {
+            pnlUpdateKai.Visible = makeVisible;
+
+            foreach (Control control in pnlUpdateKai.Controls)
+            {
+                control.Visible = makeVisible;
+            }
+        }
+
+        /// <summary>
         /// set buttons visible or invisible
         /// </summary>
         /// <param name="makeVisible"></param>
+
         private void ChangeButtonVis(bool makeVisible)
         {
             lstKai.Visible = makeVisible;
@@ -188,5 +277,44 @@ namespace Kaioordinate
             btnReturn.Enabled = makeVisible;
         }
 
+        /// <summary>
+        /// If checkbox is ticked, enable PreparationTime and reset the value if disabled
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+
+        private void cbxAddPreparation_CheckedChanged(object sender, EventArgs e)
+        {
+            numAddPreparationTime.Enabled = cbxAddPreparation.Checked;
+
+            if (numAddPreparationTime.Enabled != true)
+                numAddPreparationTime.Value = 0;
+        }
+
+        /// <summary>
+        /// If checkbox is ticked, enable PreparationTime and reset the value if disabled
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+
+        private void cbxUpdatePreparation_CheckedChanged(object sender, EventArgs e)
+        {
+            numUpdatePreparationTime.Enabled = cbxUpdatePreparation.Checked;
+
+            if (numUpdatePreparationTime.Enabled != true)
+                numUpdatePreparationTime.Value = 0;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+
+        private void lstKai_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var eventID = DM.dtKai.Rows[cmKai.Position]["EventID"];
+            cmEvent.Position = DM.dvEvent.Find(eventID);
+        }
     }
 }
