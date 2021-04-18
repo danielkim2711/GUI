@@ -70,6 +70,10 @@ namespace Kaioordinate
         {
             daLocation.Update(dtLocation);
         }
+        public void UpdateEventRegister()
+        {
+            daEventRegister.Update(dtEventRegister);
+        }
 
         private void daEvent_InfoMessage(object sender, OleDbInfoMessageEventArgs e)
         {

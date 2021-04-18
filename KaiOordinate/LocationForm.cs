@@ -10,6 +10,10 @@ using System.Windows.Forms;
 
 namespace Kaioordinate
 {
+    /// <summary>
+    /// add reference to objects
+    /// </summary>
+
     public partial class LocationForm : Form
     {
         private DataModule DM;
@@ -36,6 +40,8 @@ namespace Kaioordinate
 
         public void BindControls()
         {
+            cmLocation = (CurrencyManager)this.BindingContext[DM.dsKaiOordinate, "Location"];
+
             txtLocationNo.DataBindings.Add("Text", DM.dsKaiOordinate, "Location.LocationID");
             txtLocationName.DataBindings.Add("Text", DM.dsKaiOordinate, "Location.LocationName");
             txtAddress.DataBindings.Add("Text", DM.dsKaiOordinate, "Location.Address");
@@ -45,7 +51,6 @@ namespace Kaioordinate
             lstLocation.DataSource = DM.dsKaiOordinate;
             lstLocation.DisplayMember = "Location.LocationName";
             lstLocation.ValueMember = "Location.LocationName";
-            cmLocation = (CurrencyManager)this.BindingContext[DM.dsKaiOordinate, "Location"];
         }
 
         /// <summary>
@@ -149,9 +154,9 @@ namespace Kaioordinate
         {
             DataRow newLocationRow = DM.dtLocation.NewRow();
 
-            if (txtAddLocationName.Text == "")
+            if ((txtAddLocationName.Text == "") || (txtAddAddress.Text == ""))
             {
-                MessageBox.Show("Please type in a Location Name", "Error");
+                MessageBox.Show("Please fill out the missing field(s)", "Error");
             }
 
             else
@@ -187,9 +192,9 @@ namespace Kaioordinate
         {
             DataRow updateLocationRow = DM.dtLocation.Rows[cmLocation.Position];
 
-            if (txtUpdateLocationName.Text == "")
+            if ((txtUpdateLocationName.Text == "") || (txtUpdateAddress.Text == ""))
             {
-                MessageBox.Show("Please type in a Location Name", "Error");
+                MessageBox.Show("Please fill out the missing field(s)", "Error");
             }
 
             else

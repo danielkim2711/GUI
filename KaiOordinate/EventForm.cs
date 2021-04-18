@@ -10,6 +10,10 @@ using System.Windows.Forms;
 
 namespace Kaioordinate
 {
+    /// <summary>
+    /// add reference to objects
+    /// </summary>
+
     public partial class EventForm : Form
     {
         private DataModule DM;
@@ -37,17 +41,26 @@ namespace Kaioordinate
 
         public void BindControls()
         {
+            cmEvent = (CurrencyManager)this.BindingContext[DM.dsKaiOordinate, "Event"];
+            cmLocation = (CurrencyManager)this.BindingContext[DM.dsKaiOordinate, "Location"];
+
             txtEventNo.DataBindings.Add("Text", DM.dsKaiOordinate, "Event.EventID");
             txtEventName.DataBindings.Add("Text", DM.dsKaiOordinate, "Event.EventName");
             txtLocation.DataBindings.Add("Text", DM.dsKaiOordinate, "Event.LocationID");
             txtEventDate.DataBindings.Add("Text", DM.dsKaiOordinate, "Event.EventDate");
-            cboAddLocation.DataBindings.Add("Text", DM.dsKaiOordinate, "Location.LocationName");
-            cboUpdateLocation.DataBindings.Add("Text", DM.dsKaiOordinate, "Location.LocationName");
+
+            cboAddLocation.DataSource = DM.dsKaiOordinate;
+            cboAddLocation.DisplayMember = "Location.LocationName";
+            cboAddLocation.ValueMember = "Location.LocationID";
+
+            cboUpdateLocation.DataSource = DM.dsKaiOordinate;
+            cboUpdateLocation.DisplayMember = "Location.LocationName";
+            cboUpdateLocation.ValueMember = "Location.LocationID";
+
             lstEvent.DataSource = DM.dsKaiOordinate;
             lstEvent.DisplayMember = "Event.EventName";
             lstEvent.ValueMember = "Event.EventName";
-            cmEvent = (CurrencyManager)this.BindingContext[DM.dsKaiOordinate, "Event"];
-            cmLocation = (CurrencyManager)this.BindingContext[DM.dsKaiOordinate, "Location"];
+
         }
 
         /// <summary>
@@ -150,7 +163,6 @@ namespace Kaioordinate
         private void btnAddSave_Click(object sender, EventArgs e)
         {
             DataRow newEventRow = DM.dtEvent.NewRow();
-            DataRow newLocationRow = DM.dtLocation.NewRow();
 
             if (txtAddEventName.Text == "")
             {
@@ -159,13 +171,13 @@ namespace Kaioordinate
 
             else
             {
+                newEventRow["LocationID"] = DM.dtLocation.Rows[cboAddLocation.SelectedIndex]["LocationID"];
                 newEventRow["EventName"] = txtAddEventName.Text;
-                newLocationRow["LocationName"] = cboAddLocation.Text;
-                newEventRow["EventDate"] = dtpAddEventDate.Value;
+                newEventRow["EventDate"] = dtpAddEventDate.Value.ToString();
 
                 DM.dtEvent.Rows.Add(newEventRow);
-                MessageBox.Show("Event added successfully", "Success");
                 DM.UpdateEvent();
+                MessageBox.Show("Event added successfully", "Success");
             }
         }
 
@@ -198,14 +210,13 @@ namespace Kaioordinate
 
             else
             {
+                updateEventRow["LocationID"] = DM.dtLocation.Rows[cboUpdateLocation.SelectedIndex]["LocationID"];
                 updateEventRow["EventName"] = txtUpdateEventName.Text;
-                updateEventRow["LocationName"] = cboUpdateLocation.Text;
-                updateEventRow["EventDate"] = dtpUpdateEventDate.Value;
+                updateEventRow["EventDate"] = dtpUpdateEventDate.Value.ToString();
 
                 cmEvent.EndCurrentEdit();
-                DM.UpdateEvent();
-
                 MessageBox.Show("Event updated successfully", "Success");
+                DM.UpdateEvent();
             }
         }
 
@@ -290,6 +301,18 @@ namespace Kaioordinate
         private void dtpUpdateEventDate_ValueChanged(object sender, EventArgs e)
         {
             dtpUpdateEventDate.Format = DateTimePickerFormat.Short;
+        }
+
+        /// <summary>
+        /// simplify updating the selection of the related record
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+
+        private void lstEvent_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var locationID = DM.dtEvent.Rows[cmEvent.Position]["LocationID"];
+            cmLocation.Position = DM.dvLocation.Find(locationID);
         }
     }
 }

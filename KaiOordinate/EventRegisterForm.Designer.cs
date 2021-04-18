@@ -38,7 +38,7 @@ namespace Kaioordinate
             this.lblEvent = new System.Windows.Forms.Label();
             this.lblWhanau = new System.Windows.Forms.Label();
             this.lblRegistration = new System.Windows.Forms.Label();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.cbxKaiPreparationAssistant = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEvent)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvWhanau)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvRegistration)).BeginInit();
@@ -152,17 +152,17 @@ namespace Kaioordinate
             this.lblRegistration.TabIndex = 66;
             this.lblRegistration.Text = "Registrations";
             // 
-            // checkBox1
+            // cbxKaiPreparationAssistant
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.checkBox1.ForeColor = System.Drawing.Color.White;
-            this.checkBox1.Location = new System.Drawing.Point(443, 297);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(225, 28);
-            this.checkBox1.TabIndex = 67;
-            this.checkBox1.Text = "Kai Preparation Assitant";
-            this.checkBox1.UseVisualStyleBackColor = true;
+            this.cbxKaiPreparationAssistant.AutoSize = true;
+            this.cbxKaiPreparationAssistant.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.cbxKaiPreparationAssistant.ForeColor = System.Drawing.Color.White;
+            this.cbxKaiPreparationAssistant.Location = new System.Drawing.Point(443, 297);
+            this.cbxKaiPreparationAssistant.Name = "cbxKaiPreparationAssistant";
+            this.cbxKaiPreparationAssistant.Size = new System.Drawing.Size(234, 28);
+            this.cbxKaiPreparationAssistant.TabIndex = 67;
+            this.cbxKaiPreparationAssistant.Text = "Kai Preparation Assistant";
+            this.cbxKaiPreparationAssistant.UseVisualStyleBackColor = true;
             // 
             // EventRegisterForm
             // 
@@ -170,7 +170,7 @@ namespace Kaioordinate
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(73)))), ((int)(((byte)(41)))));
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.checkBox1);
+            this.Controls.Add(this.cbxKaiPreparationAssistant);
             this.Controls.Add(this.lblRegistration);
             this.Controls.Add(this.lblWhanau);
             this.Controls.Add(this.lblEvent);
@@ -201,6 +201,6 @@ namespace Kaioordinate
         private System.Windows.Forms.Label lblEvent;
         private System.Windows.Forms.Label lblWhanau;
         private System.Windows.Forms.Label lblRegistration;
-        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.CheckBox cbxKaiPreparationAssistant;
     }
 }

@@ -10,6 +10,10 @@ using System.Windows.Forms;
 
 namespace Kaioordinate
 {
+    /// <summary>
+    /// add reference to objects
+    /// </summary>
+
     public partial class WhanauForm : Form
     {
         private DataModule DM;
@@ -36,6 +40,8 @@ namespace Kaioordinate
 
         public void BindControls()
         {
+            cmWhanau = (CurrencyManager)this.BindingContext[DM.dsKaiOordinate, "Whanau"];
+
             txtWhanauNo.DataBindings.Add("Text", DM.dsKaiOordinate, "Whanau.WhanauID");
             txtFirstName.DataBindings.Add("Text", DM.dsKaiOordinate, "Whanau.FirstName");
             txtLastName.DataBindings.Add("Text", DM.dsKaiOordinate, "Whanau.LastName");
@@ -51,7 +57,6 @@ namespace Kaioordinate
             lstWhanau.DataSource = DM.dsKaiOordinate;
             lstWhanau.DisplayMember = "Whanau.FirstName";
             lstWhanau.ValueMember = "Whanau.FirstName";
-            cmWhanau = (CurrencyManager)this.BindingContext[DM.dsKaiOordinate, "Whanau"];
         }
 
         /// <summary>
@@ -155,9 +160,10 @@ namespace Kaioordinate
         {
             DataRow updateWhanauRow = DM.dtWhanau.Rows[cmWhanau.Position];
 
-            if ((txtUpdateFirstName.Text == "") || (txtUpdateLastName.Text == ""))
+            if ((txtUpdateFirstName.Text == "") || (txtUpdateLastName.Text == "") || (txtUpdateEmail.Text == "")
+                || (txtUpdatePhone.Text == "") || (txtUpdateAddress.Text == ""))
             {
-                MessageBox.Show("Please type in a First Name and Last Name", "Error");
+                MessageBox.Show("Please fill out the missing field(s)", "Error");
             }
 
             else
@@ -197,9 +203,10 @@ namespace Kaioordinate
         {
             DataRow newWhanauRow = DM.dtWhanau.NewRow();
 
-            if ((txtAddFirstName.Text == "") || (txtAddLastName.Text == ""))
+            if ((txtAddFirstName.Text == "") || (txtAddLastName.Text == "") || (txtAddEmail.Text == "")
+                || (txtAddPhone.Text == "") || (txtAddAddress.Text == ""))
             {
-                MessageBox.Show("Please type in a First Name and Last Name", "Error");
+                MessageBox.Show("Please fill out the missing field(s)", "Error");
             }
 
             else

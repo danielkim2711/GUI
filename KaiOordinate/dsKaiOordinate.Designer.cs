@@ -34,6 +34,14 @@ namespace Kaioordinate {
         
         private WHANAUDataTable tableWHANAU;
         
+        private global::System.Data.DataRelation relationFK_LOCATION_EVENT;
+        
+        private global::System.Data.DataRelation relationFK_WHANAU_EVENTREGISTER;
+        
+        private global::System.Data.DataRelation relationFK_EVENT_EVENTREGISTER;
+        
+        private global::System.Data.DataRelation relationFK_EVENT_KAI;
+        
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -290,6 +298,10 @@ namespace Kaioordinate {
                     this.tableWHANAU.InitVars();
                 }
             }
+            this.relationFK_LOCATION_EVENT = this.Relations["FK_LOCATION_EVENT"];
+            this.relationFK_WHANAU_EVENTREGISTER = this.Relations["FK_WHANAU_EVENTREGISTER"];
+            this.relationFK_EVENT_EVENTREGISTER = this.Relations["FK_EVENT_EVENTREGISTER"];
+            this.relationFK_EVENT_KAI = this.Relations["FK_EVENT_KAI"];
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -310,6 +322,51 @@ namespace Kaioordinate {
             base.Tables.Add(this.tableLOCATION);
             this.tableWHANAU = new WHANAUDataTable();
             base.Tables.Add(this.tableWHANAU);
+            global::System.Data.ForeignKeyConstraint fkc;
+            fkc = new global::System.Data.ForeignKeyConstraint("FK_LOCATION_EVENT", new global::System.Data.DataColumn[] {
+                        this.tableLOCATION.LocationIDColumn}, new global::System.Data.DataColumn[] {
+                        this.tableEVENT.LocationIDColumn});
+            this.tableEVENT.Constraints.Add(fkc);
+            fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.None;
+            fkc.DeleteRule = global::System.Data.Rule.None;
+            fkc.UpdateRule = global::System.Data.Rule.None;
+            fkc = new global::System.Data.ForeignKeyConstraint("FK_WHANAU_EVENTREGISTER", new global::System.Data.DataColumn[] {
+                        this.tableWHANAU.WhanauIDColumn}, new global::System.Data.DataColumn[] {
+                        this.tableEVENTREGISTER.WhanauIDColumn});
+            this.tableEVENTREGISTER.Constraints.Add(fkc);
+            fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.None;
+            fkc.DeleteRule = global::System.Data.Rule.None;
+            fkc.UpdateRule = global::System.Data.Rule.None;
+            fkc = new global::System.Data.ForeignKeyConstraint("FK_EVENT_EVENTREGISTER", new global::System.Data.DataColumn[] {
+                        this.tableEVENT.EventIDColumn}, new global::System.Data.DataColumn[] {
+                        this.tableEVENTREGISTER.EventIDColumn});
+            this.tableEVENTREGISTER.Constraints.Add(fkc);
+            fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.None;
+            fkc.DeleteRule = global::System.Data.Rule.None;
+            fkc.UpdateRule = global::System.Data.Rule.None;
+            fkc = new global::System.Data.ForeignKeyConstraint("FK_EVENT_KAI", new global::System.Data.DataColumn[] {
+                        this.tableEVENT.EventIDColumn}, new global::System.Data.DataColumn[] {
+                        this.tableKAI.EventIDColumn});
+            this.tableKAI.Constraints.Add(fkc);
+            fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.None;
+            fkc.DeleteRule = global::System.Data.Rule.None;
+            fkc.UpdateRule = global::System.Data.Rule.None;
+            this.relationFK_LOCATION_EVENT = new global::System.Data.DataRelation("FK_LOCATION_EVENT", new global::System.Data.DataColumn[] {
+                        this.tableLOCATION.LocationIDColumn}, new global::System.Data.DataColumn[] {
+                        this.tableEVENT.LocationIDColumn}, false);
+            this.Relations.Add(this.relationFK_LOCATION_EVENT);
+            this.relationFK_WHANAU_EVENTREGISTER = new global::System.Data.DataRelation("FK_WHANAU_EVENTREGISTER", new global::System.Data.DataColumn[] {
+                        this.tableWHANAU.WhanauIDColumn}, new global::System.Data.DataColumn[] {
+                        this.tableEVENTREGISTER.WhanauIDColumn}, false);
+            this.Relations.Add(this.relationFK_WHANAU_EVENTREGISTER);
+            this.relationFK_EVENT_EVENTREGISTER = new global::System.Data.DataRelation("FK_EVENT_EVENTREGISTER", new global::System.Data.DataColumn[] {
+                        this.tableEVENT.EventIDColumn}, new global::System.Data.DataColumn[] {
+                        this.tableEVENTREGISTER.EventIDColumn}, false);
+            this.Relations.Add(this.relationFK_EVENT_EVENTREGISTER);
+            this.relationFK_EVENT_KAI = new global::System.Data.DataRelation("FK_EVENT_KAI", new global::System.Data.DataColumn[] {
+                        this.tableEVENT.EventIDColumn}, new global::System.Data.DataColumn[] {
+                        this.tableKAI.EventIDColumn}, false);
+            this.Relations.Add(this.relationFK_EVENT_KAI);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -529,13 +586,16 @@ namespace Kaioordinate {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public EVENTRow AddEVENTRow(string EventName, int LocationID, System.DateTime EventDate) {
+            public EVENTRow AddEVENTRow(string EventName, LOCATIONRow parentLOCATIONRowByFK_LOCATION_EVENT, System.DateTime EventDate) {
                 EVENTRow rowEVENTRow = ((EVENTRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
                         EventName,
-                        LocationID,
+                        null,
                         EventDate};
+                if ((parentLOCATIONRowByFK_LOCATION_EVENT != null)) {
+                    columnValuesArray[2] = parentLOCATIONRowByFK_LOCATION_EVENT[0];
+                }
                 rowEVENTRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowEVENTRow);
                 return rowEVENTRow;
@@ -831,13 +891,19 @@ namespace Kaioordinate {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public EVENTREGISTERRow AddEVENTREGISTERRow(int WhanauID, int EventID, bool KaiPreparation) {
+            public EVENTREGISTERRow AddEVENTREGISTERRow(WHANAURow parentWHANAURowByFK_WHANAU_EVENTREGISTER, EVENTRow parentEVENTRowByFK_EVENT_EVENTREGISTER, bool KaiPreparation) {
                 EVENTREGISTERRow rowEVENTREGISTERRow = ((EVENTREGISTERRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
-                        WhanauID,
-                        EventID,
+                        null,
+                        null,
                         KaiPreparation};
+                if ((parentWHANAURowByFK_WHANAU_EVENTREGISTER != null)) {
+                    columnValuesArray[1] = parentWHANAURowByFK_WHANAU_EVENTREGISTER[0];
+                }
+                if ((parentEVENTRowByFK_EVENT_EVENTREGISTER != null)) {
+                    columnValuesArray[2] = parentEVENTRowByFK_EVENT_EVENTREGISTER[0];
+                }
                 rowEVENTREGISTERRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowEVENTREGISTERRow);
                 return rowEVENTREGISTERRow;
@@ -1152,15 +1218,18 @@ namespace Kaioordinate {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public KAIRow AddKAIRow(int EventID, string KaiName, bool PreparationRequired, int PreparationMinutes, int ServeQuantity) {
+            public KAIRow AddKAIRow(EVENTRow parentEVENTRowByFK_EVENT_KAI, string KaiName, bool PreparationRequired, int PreparationMinutes, int ServeQuantity) {
                 KAIRow rowKAIRow = ((KAIRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
-                        EventID,
+                        null,
                         KaiName,
                         PreparationRequired,
                         PreparationMinutes,
                         ServeQuantity};
+                if ((parentEVENTRowByFK_EVENT_KAI != null)) {
+                    columnValuesArray[1] = parentEVENTRowByFK_EVENT_KAI[0];
+                }
                 rowKAIRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowKAIRow);
                 return rowKAIRow;
@@ -2043,6 +2112,17 @@ namespace Kaioordinate {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public LOCATIONRow LOCATIONRow {
+                get {
+                    return ((LOCATIONRow)(this.GetParentRow(this.Table.ParentRelations["FK_LOCATION_EVENT"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_LOCATION_EVENT"]);
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool IsEventNameNull() {
                 return this.IsNull(this.tableEVENT.EventNameColumn);
             }
@@ -2075,6 +2155,28 @@ namespace Kaioordinate {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetEventDateNull() {
                 this[this.tableEVENT.EventDateColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public KAIRow[] GetKAIRows() {
+                if ((this.Table.ChildRelations["FK_EVENT_KAI"] == null)) {
+                    return new KAIRow[0];
+                }
+                else {
+                    return ((KAIRow[])(base.GetChildRows(this.Table.ChildRelations["FK_EVENT_KAI"])));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public EVENTREGISTERRow[] GetEVENTREGISTERRows() {
+                if ((this.Table.ChildRelations["FK_EVENT_EVENTREGISTER"] == null)) {
+                    return new EVENTREGISTERRow[0];
+                }
+                else {
+                    return ((EVENTREGISTERRow[])(base.GetChildRows(this.Table.ChildRelations["FK_EVENT_EVENTREGISTER"])));
+                }
             }
         }
         
@@ -2148,6 +2250,28 @@ namespace Kaioordinate {
                 }
                 set {
                     this[this.tableEVENTREGISTER.KaiPreparationColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public WHANAURow WHANAURow {
+                get {
+                    return ((WHANAURow)(this.GetParentRow(this.Table.ParentRelations["FK_WHANAU_EVENTREGISTER"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_WHANAU_EVENTREGISTER"]);
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public EVENTRow EVENTRow {
+                get {
+                    return ((EVENTRow)(this.GetParentRow(this.Table.ParentRelations["FK_EVENT_EVENTREGISTER"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_EVENT_EVENTREGISTER"]);
                 }
             }
             
@@ -2295,6 +2419,17 @@ namespace Kaioordinate {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public EVENTRow EVENTRow {
+                get {
+                    return ((EVENTRow)(this.GetParentRow(this.Table.ParentRelations["FK_EVENT_KAI"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_EVENT_KAI"]);
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool IsEventIDNull() {
                 return this.IsNull(this.tableKAI.EventIDColumn);
             }
@@ -2433,6 +2568,17 @@ namespace Kaioordinate {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetAddressNull() {
                 this[this.tableLOCATION.AddressColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public EVENTRow[] GetEVENTRows() {
+                if ((this.Table.ChildRelations["FK_LOCATION_EVENT"] == null)) {
+                    return new EVENTRow[0];
+                }
+                else {
+                    return ((EVENTRow[])(base.GetChildRows(this.Table.ChildRelations["FK_LOCATION_EVENT"])));
+                }
             }
         }
         
@@ -2599,6 +2745,17 @@ namespace Kaioordinate {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetAddressNull() {
                 this[this.tableWHANAU.AddressColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public EVENTREGISTERRow[] GetEVENTREGISTERRows() {
+                if ((this.Table.ChildRelations["FK_WHANAU_EVENTREGISTER"] == null)) {
+                    return new EVENTREGISTERRow[0];
+                }
+                else {
+                    return ((EVENTREGISTERRow[])(base.GetChildRows(this.Table.ChildRelations["FK_WHANAU_EVENTREGISTER"])));
+                }
             }
         }
         

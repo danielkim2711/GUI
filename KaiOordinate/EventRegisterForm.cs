@@ -10,6 +10,10 @@ using System.Windows.Forms;
 
 namespace Kaioordinate
 {
+    /// <summary>
+    /// add reference to objects
+    /// </summary>
+
     public partial class EventRegisterForm : Form
     {
         private DataModule DM;
@@ -17,11 +21,9 @@ namespace Kaioordinate
         private CurrencyManager cmEvent;
         private CurrencyManager cmWhanau;
         private CurrencyManager cmRegistration;
-        private DataTable dt = new DataTable();
-        private CurrencyManager cmDt;
 
         /// <summary>
-        /// 
+        /// change constructor to accept DataModule and MainForm reference
         /// </summary>
         /// <param name="dm"></param>
         /// <param name="mnu"></param>
@@ -33,8 +35,7 @@ namespace Kaioordinate
             frmMenu = mnu;
             cmEvent = (CurrencyManager)this.BindingContext[DM.dsKaiOordinate, "Event"];
             cmWhanau = (CurrencyManager)this.BindingContext[DM.dsKaiOordinate, "Whanau"];
-            cmRegistration = (CurrencyManager)this.BindingContext[DM.dsKaiOordinate, "EventRegister"];
-
+            cmRegistration = (CurrencyManager)this.BindingContext[DM.dsKaiOordinate, "EVENT.FK_EVENT_EVENTREGISTER"];
             BindControls();
         }
 
@@ -51,17 +52,58 @@ namespace Kaioordinate
             dgvWhanau.DataMember = "Whanau";
 
             dgvRegistration.DataSource = DM.dsKaiOordinate;
-            dgvRegistration.DataMember = "EventRegister";
+            dgvRegistration.DataMember = "EVENT.FK_EVENT_EVENTREGISTER";
         }
+
+        /// <summary>
+        /// add a record
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
+            DataRow eventRow = DM.dtEvent.Rows[cmEvent.Position];
+            DataRow whanauRow = DM.dtWhanau.Rows[cmWhanau.Position];
 
+            DataRow[] newEventRegistration = DM.dtEventRegister.Select($"EventID = {eventRow["EventID"]} and WhanauID = {whanauRow["WhanauID"]}");
+
+            if (newEventRegistration.Length != 0)
+            {
+                MessageBox.Show("Whanau can only be registered to an event once.", "Error");
+            }
+
+            else
+            {
+                DataRow newEventRegisterRow = DM.dtEventRegister.NewRow();
+                newEventRegisterRow["EventID"] = eventRow["EventID"];
+                newEventRegisterRow["WhanauID"] = whanauRow["WhanauID"];
+                newEventRegisterRow["KaiPreparation"] = cbxKaiPreparationAssistant.Checked;
+
+                DM.dsKaiOordinate.Tables["EventRegister"].Rows.Add(newEventRegisterRow);
+                DM.UpdateEventRegister();
+                MessageBox.Show("Entry added successfully", "Success");
+            }
         }
+
+        /// <summary>
+        /// delete a record
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
+            DataRow deleteEventRegisterRow = DM.dtEventRegister.Rows[cmRegistration.Position];
+            
+            if (MessageBox.Show("Would you like to delete this record?", "Warning",
+                MessageBoxButtons.OKCancel) == DialogResult.OK)
 
+            {
+                deleteEventRegisterRow.Delete();
+                DM.UpdateEventRegister();
+                MessageBox.Show("Entry removed successfully", "Success");
+            }
         }
 
         /// <summary>

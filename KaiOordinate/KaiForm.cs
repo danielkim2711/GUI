@@ -13,6 +13,7 @@ namespace Kaioordinate
     /// <summary>
     /// add reference to objects
     /// </summary>
+ 
     public partial class KaiForm : Form
     {
         private DataModule DM;
@@ -40,19 +41,27 @@ namespace Kaioordinate
 
         public void BindControls()
         {
+            cmKai = (CurrencyManager)this.BindingContext[DM.dsKaiOordinate, "Kai"];
+            cmEvent = (CurrencyManager)this.BindingContext[DM.dsKaiOordinate, "Event"];
+
             txtKaiNo.DataBindings.Add("Text", DM.dsKaiOordinate, "Kai.KaiID");
             txtEvent.DataBindings.Add("Text", DM.dsKaiOordinate, "Event.EventName");
             txtKaiName.DataBindings.Add("Text", DM.dsKaiOordinate, "Kai.KaiName");
             txtPreparation.DataBindings.Add("Text", DM.dsKaiOordinate, "Kai.PreparationRequired");
             txtPreparationTime.DataBindings.Add("Text", DM.dsKaiOordinate, "Kai.PreparationMinutes");
             txtServingQuantity.DataBindings.Add("Text", DM.dsKaiOordinate, "Kai.ServeQuantity");
-            cboAddEvent.DataBindings.Add("Text", DM.dsKaiOordinate, "Event.EventName");
-            cboUpdateEvent.DataBindings.Add("Text", DM.dsKaiOordinate, "Event.EventName");
+
+            cboAddEvent.DataSource = DM.dsKaiOordinate;
+            cboAddEvent.DisplayMember = "Event.EventName";
+            cboAddEvent.ValueMember = "Event.EventID";
+
+            cboUpdateEvent.DataSource = DM.dsKaiOordinate;
+            cboUpdateEvent.DisplayMember = "Event.EventName";
+            cboUpdateEvent.ValueMember = "Event.EventID";
+
             lstKai.DataSource = DM.dsKaiOordinate;
             lstKai.DisplayMember = "Kai.KaiName";
             lstKai.ValueMember = "Kai.KaiName";
-            cmKai = (CurrencyManager)this.BindingContext[DM.dsKaiOordinate, "Kai"];
-            cmEvent = (CurrencyManager)this.BindingContext[DM.dsKaiOordinate, "Event"];
         }
 
         /// <summary>
@@ -105,6 +114,8 @@ namespace Kaioordinate
         {
             ChangeUpdatePanelVis(pnlUpdateKai, true);
             ChangeButtonVis(false);
+
+            cbxUpdatePreparation.Checked = txtPreparation.Text == "True" ? true : false;
         }
 
         /// <summary>
@@ -129,8 +140,8 @@ namespace Kaioordinate
                 MessageBoxButtons.OKCancel) == DialogResult.OK)
                 {
                     deleteKaiRow.Delete();
-                    MessageBox.Show("Kai deleted successfully", "Success");
                     DM.UpdateKai();
+                    MessageBox.Show("Kai deleted successfully", "Success");
                 }
             }
         }
@@ -163,14 +174,15 @@ namespace Kaioordinate
 
             else
             {
+                newKaiRow["EventID"] = DM.dtEvent.Rows[cboAddEvent.SelectedIndex]["EventID"];
                 newKaiRow["KaiName"] = txtAddKaiName.Text;
                 newKaiRow["PreparationRequired"] = cbxAddPreparation.Checked;
                 newKaiRow["PreparationMinutes"] = numAddPreparationTime.Value;
                 newKaiRow["ServeQuantity"] = numAddServingQuantity.Value;
 
                 DM.dtKai.Rows.Add(newKaiRow);
-                MessageBox.Show("Kai added successfully", "Success");
                 DM.UpdateKai();
+                MessageBox.Show("Kai added successfully", "Success");
             }
         }
 
@@ -195,7 +207,6 @@ namespace Kaioordinate
         private void btnUpdateSave_Click(object sender, EventArgs e)
         {
             DataRow updateKaiRow = DM.dtKai.Rows[cmKai.Position];
-            DataRow updateEventRow = DM.dtEvent.Rows[cmEvent.Position];
 
             if ((txtUpdateKaiName.Text == "") || (numUpdateServingQuantity.Value == 0))
             {
@@ -204,15 +215,14 @@ namespace Kaioordinate
 
             else
             {
+                updateKaiRow["EventID"] = DM.dtEvent.Rows[cboUpdateEvent.SelectedIndex]["EventID"];
                 updateKaiRow["KaiName"] = txtUpdateKaiName.Text;
-                updateEventRow["EventName"] = cboUpdateEvent.Text;
                 updateKaiRow["PreparationRequired"] = cbxUpdatePreparation.Checked;
                 updateKaiRow["PreparationMinutes"] = numUpdatePreparationTime.Value;
                 updateKaiRow["ServeQuantity"] = numUpdateServingQuantity.Value;
 
                 cmKai.EndCurrentEdit();
                 DM.UpdateKai();
-
                 MessageBox.Show("Kai updated successfully", "Success");
             }
         }
@@ -306,7 +316,7 @@ namespace Kaioordinate
         }
 
         /// <summary>
-        /// 
+        /// simplify updating the selection of the related record
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>

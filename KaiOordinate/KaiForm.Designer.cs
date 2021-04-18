@@ -316,6 +316,7 @@ namespace Kaioordinate
             this.lstKai.Name = "lstKai";
             this.lstKai.Size = new System.Drawing.Size(257, 268);
             this.lstKai.TabIndex = 20;
+            this.lstKai.SelectedIndexChanged += new System.EventHandler(this.lstKai_SelectedIndexChanged);
             // 
             // pnlAddKai
             // 
@@ -405,6 +406,7 @@ namespace Kaioordinate
             // cbxAddPreparation
             // 
             this.cbxAddPreparation.AutoSize = true;
+            this.cbxAddPreparation.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
             this.cbxAddPreparation.Location = new System.Drawing.Point(198, 125);
             this.cbxAddPreparation.Name = "cbxAddPreparation";
             this.cbxAddPreparation.Size = new System.Drawing.Size(15, 14);
@@ -615,6 +617,7 @@ namespace Kaioordinate
             // cbxUpdatePreparation
             // 
             this.cbxUpdatePreparation.AutoSize = true;
+            this.cbxUpdatePreparation.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
             this.cbxUpdatePreparation.Location = new System.Drawing.Point(192, 128);
             this.cbxUpdatePreparation.Name = "cbxUpdatePreparation";
             this.cbxUpdatePreparation.Size = new System.Drawing.Size(15, 14);

@@ -54,8 +54,8 @@ namespace Kaioordinate
             this.lblAddLocation = new System.Windows.Forms.Label();
             this.lblAddEventDate = new System.Windows.Forms.Label();
             this.pnlUpdateEvent = new System.Windows.Forms.Panel();
-            this.btnUpdateSave = new FontAwesome.Sharp.IconButton();
             this.dtpUpdateEventDate = new System.Windows.Forms.DateTimePicker();
+            this.btnUpdateSave = new FontAwesome.Sharp.IconButton();
             this.lblUpdateEventDate = new System.Windows.Forms.Label();
             this.btnUpdateCancel = new FontAwesome.Sharp.IconButton();
             this.lblUpdateLocation = new System.Windows.Forms.Label();
@@ -133,6 +133,7 @@ namespace Kaioordinate
             this.lstEvent.Name = "lstEvent";
             this.lstEvent.Size = new System.Drawing.Size(257, 268);
             this.lstEvent.TabIndex = 49;
+            this.lstEvent.SelectedIndexChanged += new System.EventHandler(this.lstEvent_SelectedIndexChanged);
             // 
             // lblLocation
             // 
@@ -322,9 +323,10 @@ namespace Kaioordinate
             // dtpAddEventDate
             // 
             this.dtpAddEventDate.CalendarFont = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.dtpAddEventDate.Location = new System.Drawing.Point(207, 190);
+            this.dtpAddEventDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.dtpAddEventDate.Location = new System.Drawing.Point(207, 183);
             this.dtpAddEventDate.Name = "dtpAddEventDate";
-            this.dtpAddEventDate.Size = new System.Drawing.Size(247, 20);
+            this.dtpAddEventDate.Size = new System.Drawing.Size(247, 29);
             this.dtpAddEventDate.TabIndex = 64;
             this.dtpAddEventDate.ValueChanged += new System.EventHandler(this.dtpAddEventDate_ValueChanged);
             // 
@@ -372,19 +374,29 @@ namespace Kaioordinate
             // 
             // pnlUpdateEvent
             // 
-            this.pnlUpdateEvent.Controls.Add(this.btnUpdateSave);
             this.pnlUpdateEvent.Controls.Add(this.dtpUpdateEventDate);
+            this.pnlUpdateEvent.Controls.Add(this.btnUpdateSave);
             this.pnlUpdateEvent.Controls.Add(this.lblUpdateEventDate);
             this.pnlUpdateEvent.Controls.Add(this.btnUpdateCancel);
             this.pnlUpdateEvent.Controls.Add(this.lblUpdateLocation);
             this.pnlUpdateEvent.Controls.Add(this.txtUpdateEventName);
             this.pnlUpdateEvent.Controls.Add(this.cboUpdateLocation);
             this.pnlUpdateEvent.Controls.Add(this.lblUpdateEventName);
-            this.pnlUpdateEvent.Location = new System.Drawing.Point(295, 16);
+            this.pnlUpdateEvent.Location = new System.Drawing.Point(296, 16);
             this.pnlUpdateEvent.Name = "pnlUpdateEvent";
             this.pnlUpdateEvent.Size = new System.Drawing.Size(479, 321);
             this.pnlUpdateEvent.TabIndex = 59;
             this.pnlUpdateEvent.Visible = false;
+            // 
+            // dtpUpdateEventDate
+            // 
+            this.dtpUpdateEventDate.CalendarFont = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.dtpUpdateEventDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.dtpUpdateEventDate.Location = new System.Drawing.Point(207, 175);
+            this.dtpUpdateEventDate.Name = "dtpUpdateEventDate";
+            this.dtpUpdateEventDate.Size = new System.Drawing.Size(247, 29);
+            this.dtpUpdateEventDate.TabIndex = 68;
+            this.dtpUpdateEventDate.ValueChanged += new System.EventHandler(this.dtpUpdateEventDate_ValueChanged);
             // 
             // btnUpdateSave
             // 
@@ -403,16 +415,6 @@ namespace Kaioordinate
             this.btnUpdateSave.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnUpdateSave.UseVisualStyleBackColor = false;
             this.btnUpdateSave.Click += new System.EventHandler(this.btnUpdateSave_Click);
-            // 
-            // dtpUpdateEventDate
-            // 
-            this.dtpUpdateEventDate.CalendarFont = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.dtpUpdateEventDate.Checked = false;
-            this.dtpUpdateEventDate.Location = new System.Drawing.Point(208, 187);
-            this.dtpUpdateEventDate.Name = "dtpUpdateEventDate";
-            this.dtpUpdateEventDate.Size = new System.Drawing.Size(247, 20);
-            this.dtpUpdateEventDate.TabIndex = 72;
-            this.dtpUpdateEventDate.ValueChanged += new System.EventHandler(this.dtpUpdateEventDate_ValueChanged);
             // 
             // lblUpdateEventDate
             // 
@@ -544,12 +546,12 @@ namespace Kaioordinate
         private FontAwesome.Sharp.IconButton btnAddCancel;
         private System.Windows.Forms.Panel pnlUpdateEvent;
         private FontAwesome.Sharp.IconButton btnUpdateSave;
-        private System.Windows.Forms.DateTimePicker dtpUpdateEventDate;
         private System.Windows.Forms.Label lblUpdateEventDate;
         private FontAwesome.Sharp.IconButton btnUpdateCancel;
         private System.Windows.Forms.Label lblUpdateLocation;
         private System.Windows.Forms.TextBox txtUpdateEventName;
         private System.Windows.Forms.ComboBox cboUpdateLocation;
         private System.Windows.Forms.Label lblUpdateEventName;
+        private System.Windows.Forms.DateTimePicker dtpUpdateEventDate;
     }
 }
